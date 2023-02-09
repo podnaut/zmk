@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
+ * Copyright (c) 2021 Rafael Yumagulov
  *
  * SPDX-License-Identifier: MIT
  */
@@ -7,14 +7,13 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
 #define Base 0
-#define Gaming 1
-#define NavNum 2
-#define NavAppNav 3
-#define NumCharFunc 4
-#define AppNavMacro 5
+#define NavNum 1
+#define NavAppNav 2
+#define NumCharFunc 3
+#define AppNavMacro 4
+#define Gaming 5
 #define ControlGroups 6
 #define Bluetooth 7
 
@@ -349,7 +348,7 @@
                         tap-ms = <5>;
                         bindings = <&kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H >                          
                                  ;
-                };     
+                };  
                 poptabvscode: poptabvscode {
                         compatible = "zmk,behavior-macro";
                         label = "ZM_poptabvscode";
@@ -359,7 +358,7 @@
                         bindings = <&kp LC(K)>
                                  , <&kp O>                          
                                  ;
-                };                   
+                };                            
         };
 };
  
@@ -379,25 +378,16 @@
 
                 Base {
                         bindings = <
-                                &kp ESC      &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y               &kp U        &kp I        &kp O        &kp P        &kp BSPC
+                        &none   &kp ESC      &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y               &kp U        &kp I        &kp O        &kp P        &kp BSPC      &none
                                 &kp TAB      &kp A        &kp S        &kp D        &kp F        &kp G            &kp H               &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
                                 &kp LSHFT    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N               &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
                                                                        &kp LCTRL    &mt LALT DEL &lt NavNum SPACE &lt NavAppNav SPACE &kp RGUI     &td0
                         >;
                 };
-              
-                Gaming {
-                        bindings = <
-                                &kp ESC      &kp Q        &kp W        &kp E        &kp R             &kp T        &kp Y           &kp U        &kp I        &kp O        &kp P        &kp BSPC
-                                &kp TAB      &kp A        &kp S        &kp D        &kp F             &kp G        &kp H           &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
-                                &kp LSHFT    &kp Z        &kp X        &kp C        &kp V             &kp B        &kp N           &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
-                                                                       &mo NavNum   &mo ControlGroups &kp SPACE    &lt NavNum C_PP &kp C_NEXT   &to Base
-                        >;                
-                };
-               
+
                 NavNum {
                         bindings = <
-                                &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &kp LPAR              &kp RPAR              &kp N7       &kp N8       &kp N9       &kp DEL      &kp BSPC     
+                        &none   &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &kp LPAR              &kp RPAR              &kp N7       &kp N8       &kp N9       &kp DEL      &kp BSPC       &none 
                                 &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &kp LBRC              &kp RBRC              &kp N4       &kp N5       &kp N6       &kp SEMI     &kp ENTER    
                                 &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &kp LBKT              &kp RBKT              &kp N1       &kp N2       &kp N3       &kp BSLH     &kp RSHFT    
                                                                        &trans       &trans       &trans                &lt NumCharFunc SPACE &kp N0       &kp DOT       
@@ -406,16 +396,16 @@
 
                 NavAppNav {
                         bindings = <
-                                &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &thislinepairparen    &kp LC(LS(TAB))       &kp LC(TAB)      &kp HOME         &kp UP     &kp END          &kp BSPC     
-                                &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &thislinepairbraces   &kp LA(LEFT)          &kp LA(RIGHT)    &kp LEFT         &kp DOWN   &kp RIGHT        &kp PAGE_UP    
-                                &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &thislinepairbrackets &kp LC(LS(MINUS))     &kp LC(LS(PLUS)) &opentaskmanager &poptabchrome &openfolderincmd &kp PAGE_DOWN  
+                        &none   &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &thislinepairparen    &kp LC(LS(TAB))       &kp LC(TAB)      &kp HOME         &kp UP        &kp END          &kp BSPC     &none
+                                &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &thislinepairbraces   &kp LA(LEFT)          &kp LA(RIGHT)    &kp LEFT         &kp DOWN      &kp RIGHT        &kp PAGE_UP    
+                                &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &thislinepairbrackets &kp LC(LS(MINUS))     &kp LC(LS(PLUS)) &opentaskmanager &poptabchrome &openfolderincmd &kp PAGE_DOWN    
                                                                        &trans       &trans       &lt NumCharFunc SPACE &trans                &trans           &trans       
                         >;
                 };
 
                 NumCharFunc {
                         bindings = <
-                                &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp MINUS    &kp EQUAL    
+                        &none   &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp MINUS    &kp EQUAL   &none 
                                 &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT    &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR     &kp UNDER    &kp PLUS   
                                 &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6       &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12    
                                                                        &kp CAPS     &kp C_PP     &trans       &trans       &kp C_PREV   &kp C_NEXT     
@@ -424,26 +414,33 @@
 
                 AppNavMacro {
                         bindings = <
-                                &kp LA(F4)    &kp HOME         &kp UP        &kp END          &kp LC(LS(TAB))   &kp LC(TAB)      &selectionpairparen    &addspacedown            &removecharacterdown   &movelineup        &movelinedown        &poptabvscode       
+                        &none   &kp LA(F4)    &kp HOME         &kp UP        &kp END          &kp LC(LS(TAB))   &kp LC(TAB)      &selectionpairparen    &addspacedown            &removecharacterdown   &movelineup        &movelinedown        &poptabvscode          &none  
                                 &kp PG_UP     &kp LEFT         &kp DOWN      &kp RIGHT        &kp LA(LEFT)      &kp LA(RIGHT)    &selectionpairbraces   &selectionpairinequality &selectionblockcomment &selectiondoend    &selectionpairquotes &selectline
                                 &kp PAGE_DOWN &opentaskmanager &poptabchrome &openfolderincmd &kp LC(LS(MINUS)) &kp LC(LS(PLUS)) &selectionpairbrackets &shifcontrolleft         &selectword            &shiftcontrolright &movemaxwindowleft   &movemaxwindowright
                                                                              &trans           &trans            &trans           &to Gaming             &trans                   &trans
    
                         >;
                 };
-
+                Gaming {
+                        bindings = <
+                        &none   &kp ESC      &kp Q        &kp W        &kp E        &kp R             &kp T        &kp Y           &kp U        &kp I        &kp O        &kp P        &kp BSPC  &none
+                                &kp TAB      &kp A        &kp S        &kp D        &kp F             &kp G        &kp H           &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
+                                &kp LSHFT    &kp Z        &kp X        &kp C        &kp V             &kp B        &kp N           &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
+                                                                       &kp LCTRL    &mo ControlGroups &kp SPACE    &lt NavNum C_PP &kp C_NEXT   &to Base
+                        >;                
+                };
                 ControlGroups {
                         bindings = <
-                                &trans      &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &trans       &trans       &trans       &trans       &trans       &trans       
-                                &trans      &kp LC(N1)   &kp LC(N2)   &kp LC(N3)   &kp LC(N4)   &kp LC(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
-                                &trans      &kp LS(N1)   &kp LS(N2)   &kp LS(N3)   &kp LS(N4)   &kp LS(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
-                                                                      &trans       &trans       &trans       &trans       &trans       &trans       
+                        &none   &trans       &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &trans       &trans       &trans       &trans       &trans       &trans       &none    
+                                &trans       &kp LS(N1)   &kp LS(N2)   &kp LS(N3)   &kp LS(N4)   &kp LS(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                &trans       &kp LC(N1)   &kp LC(N2)   &kp LC(N3)   &kp LC(N4)   &kp LC(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                                                       &trans       &trans       &trans       &trans       &trans       &trans       
 
                        >; 
                 };  
                 Bluetooth {
                         bindings = <
-                                &bt BT_CLR   &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &bluetoothstring       
+                        &none   &bt BT_CLR   &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &bluetoothstring       &none
                                 &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
                                 &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
                                                                        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 &trans       
