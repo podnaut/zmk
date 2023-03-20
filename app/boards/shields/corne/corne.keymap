@@ -9,441 +9,107 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define Base 0
-#define Gaming 1
-#define NavNum 2
-#define NavAppNav 3
-#define NumCharFunc 4
-#define AppNavMacro 5
-#define ControlGroups 6
-#define Bluetooth 7
+#define BASE 0
+#define GAMING 1
+#define CTRL_GROUPS 2
+#define NAV_NUM 3
+#define APPNAV 4
+#define NUM_SYM_FUNC 5
+#define BLUETOOTH 7
 
 / {
         macros {
-                // htmlformat: htmlformat {
-                //         compatible = "zmk,behavior-macro";
-                //         label = "ZM_htmlformat";
-                //         #binding-cells = <0>;
-                //         wait-ms = <5>;
-                //         tap-ms = <5>;
-                //         bindings = <&kp HOME>
-                //                  , <&kp H &kp T &kp M &kp L &kp V &kp I &kp E &kp W &kp L &kp I &kp N &kp E &kp LEFT_PARENTHESIS &kp DOUBLE_QUOTES>
-                //                  , <&kp END>
-                //                  , <&kp DOUBLE_QUOTES &kp RIGHT_PARENTHESIS>
-                //                  , <&kp DOWN>
-                //                  ;
-                // };
-                // quoteswap: quoteswap {
-                //         compatible = "zmk,behavior-macro";
-                //         label = "ZM_quoteswap";
-                //         #binding-cells = <0>;
-                //         wait-ms = <5>;
-                //         tap-ms = <5>;
-                //         bindings = <&kp LC(H)>
-                //                  , <&kp DOUBLE_QUOTES>
-                //                  , <&kp TAB>
-                //                  , <&kp DOUBLE_QUOTES &kp PLUS &kp Q &kp U &kp O &kp T &kp E &kp PLUS &kp DOUBLE_QUOTES>
-                //                  , <&kp LA(A)>
-                //                  , <&kp ESC>
-                //                  ;
-                // }; 
-                addspacedown: addspacedown {
+                ble_string: ble_string {
                         compatible = "zmk,behavior-macro";
-                        label = "ZM_addspacedown";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp HOME>
-                                 , <&kp SPACE>
-                                 , <&kp DOWN>
-                                 ;
-                }; 
-                selectiondoend: selectiondoend {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectiondoend";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp D &kp O>
-                                 , <&kp ENTER>
-                                 , <&kp LC(V)>
-                                 , <&kp ENTER>
-                                 , <&kp E &kp N &kp D>                               
-                                 ;
-                }; 
-                selectionpairparen: selectionpairparen {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionpairparen";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp LPAR>
-                                 , <&kp LC(V)>
-                                 , <&kp RPAR>                               
-                                 ;
-                };
-                selectionpairbraces: selectionpairbraces {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionpairbraces";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp LBRC>
-                                 , <&kp LC(V)>
-                                 , <&kp RBRC>
-                                 ;
-                };    
-                selectionpairbrackets: selectionpairbrackets {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionpairbrackets";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp LBKT>
-                                 , <&kp LC(V)>
-                                 , <&kp RBKT>                               
-                                 ;
-                };    
-                selectionpairquotes: selectionpairquotes {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionpairquotes";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp DQT>
-                                 , <&kp LC(V)>
-                                 , <&kp DQT>                               
-                                 ;
-                };           
-                selectline: selectline {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectline";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp HOME>
-                                 , <&kp LS(END)>                               
-                                 ;
-                };   
-                selectword: selectword {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectword";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(LEFT)>
-                                 , <&kp LC(LS(RIGHT))>                               
-                                 ;
-                };     
-                selectionblockcomment: selectionblockcomment {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionblockcomment";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp SLASH &kp ASTRK>
-                                 , <&kp LC(V)>
-                                 , <&kp ASTRK &kp SLASH>                               
-                                 ;
-                };  
-                selectionpairinequality: selectionpairinequality {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_selectionpairinequality";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(X)>
-                                 , <&kp LESS_THAN>
-                                 , <&kp LC(V)>
-                                 , <&kp GREATER_THAN>                               
-                                 ;
-                }; 
-                thislinepairparen: thislinepairparen {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_thislinepairparen";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&selectline> 
-                                 , <&kp LC(X)>
-                                 , <&kp LPAR>
-                                 , <&kp LC(V)>
-                                 , <&kp RPAR>                               
-                                 ;
-                };
-                thislinepairbraces: thislinepairbraces {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_thislinepairbraces";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&selectline> 
-                                 , <&kp LC(X)>
-                                 , <&kp LBRC>
-                                 , <&kp LC(V)>
-                                 , <&kp RBRC>                               
-                                 ;
-                };  
-                thislinepairbrackets: thislinepairbrackets {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_thislinepairbrackets";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&selectline> 
-                                 , <&kp LC(X)>
-                                 , <&kp LBKT>
-                                 , <&kp LC(V)>
-                                 , <&kp RBKT>                               
-                                 ;
-                };         
-                // chromesearch: chromesearch {
-                //         compatible = "zmk,behavior-macro";
-                //         label = "ZM_chromesearch";
-                //         #binding-cells = <0>;
-                //         wait-ms = <5>;
-                //         tap-ms = <5>;
-                //         bindings = <&kp LC(C)> 
-                //                  , <&kp LGUI &macro_wait_time 100>
-                //                  , <&macro_wait_time 5 &kp C &kp H &kp R &kp O &kp M &kp E>
-                //                  , <&kp ENTER>
-                //                  , <&kp LA(D)>
-                //                  , <&kp LC(V)>
-                //                  , <&kp ENTER>                               
-                //                  ;
-                // }; 
-                poptabchrome: poptabchrome {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_poptabchrome";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LA(D)>
-                                 , <&kp LC(C)>
-                                 , <&kp LC(W)>
-                                 , <&kp LC(N)>
-                                 , <&kp LC(V)>
-                                 , <&kp ENTER>                               
-                                 ;
-                }; 
-                openfolderincmd: openfolderincmd {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_openfolderincmd";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LA(D)>
-                                 , <&kp C &kp M &kp D>
-                                 , <&kp ENTER>                              
-                                 ;
-                };    
-                removecharacterdown: removecharacterdown {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_removecharacterdown";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp HOME>
-                                 , <&kp DEL>
-                                 , <&kp DOWN>                            
-                                 ;
-                }; 
-                movelineup: movelineup {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_movelineup";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&selectline>
-                                 , <&kp LC(X)>
-                                 , <&kp BSPC>
-                                 , <&kp HOME>
-                                 , <&kp ENTER>
-                                 , <&kp UP>
-                                 , <&kp LC(V)>                               
-                                 ;
-                }; 
-                movelinedown: movelinedown {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_movelinedown";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&selectline>
-                                 , <&kp LC(X)>
-                                 , <&kp BSPC>
-                                 , <&kp DOWN>
-                                 , <&kp END>
-                                 , <&kp ENTER>
-                                 , <&kp LC(V)>                               
-                                 ;
-                }; 
-                // deleteword: deleteword {
-                //         compatible = "zmk,behavior-macro";
-                //         label = "ZM_deleteword";
-                //         #binding-cells = <0>;
-                //         wait-ms = <5>;
-                //         tap-ms = <5>;
-                //         bindings = <&shifcontrolleft>
-                //                  , <&kp BSPC>                            
-                //                  ;
-                // };  
-                shifcontrolleft: shifcontrolleft {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_shifcontrolleft";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LS(LC(LEFT))>                          
-                                 ;
-                }; 
-                shiftcontrolright: shiftcontrolright {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_shiftcontrolright";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LS(LC(RIGHT))>                          
-                                 ;
-                }; 
-                movemaxwindowleft: movemaxwindowleft {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_movemaxwindowleft";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LS(LG(LEFT))>   
-                                 , <&kp LG(UP)>                       
-                                 ;
-                }; 
-                movemaxwindowright: movemaxwindowright {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_movemaxwindowright";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LS(LG(RIGHT))>
-                                 , <&kp LG(UP)>                                 
-                                 ;
-                }; 
-                opentaskmanager: opentaskmanager {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_opentaskmanager";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LS(LC(ESC))>                          
-                                 ;
-                };     
-                bluetoothstring: bluetoothstring {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_bluetoothstring";
+                        label = "ZM_ble_string";
                         #binding-cells = <0>;
                         wait-ms = <5>;
                         tap-ms = <5>;
                         bindings = <&kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H >                          
                                  ;
-                };     
-                poptabvscode: poptabvscode {
-                        compatible = "zmk,behavior-macro";
-                        label = "ZM_poptabvscode";
-                        #binding-cells = <0>;
-                        wait-ms = <5>;
-                        tap-ms = <5>;
-                        bindings = <&kp LC(K)>
-                                 , <&kp O>                          
-                                 ;
-                };                   
+                };      
         };
 };
  
 / {
         behaviors {
-                td0: tap_dance_0 {
+                music_dance: tap_dance_0 {
                         compatible = "zmk,behavior-tap-dance";
                         label = "TAP_DANCE_0";
                         #binding-cells = <0>;
                         tapping-term-ms = <200>;
-                        bindings = <&mo AppNavMacro>, <&mo AppNavMacro>, <&mo Bluetooth>;
+                        bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
+                };
+
+                ld_ble_game: tap_dance_1 {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "TAP_DANCE_1";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&mo BLUETOOTH>, <&mo BLUETOOTH>, <&to GAMING>;
+                };
+                
+                ld_ble_base: tap_dance_2 {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "TAP_DANCE_2";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&mo BLUETOOTH>, <&mo BLUETOOTH>, <&to BASE>;
                 };
     };
 
         keymap {
                 compatible = "zmk,keymap";
 
-                Base {
+                BASE {
                         bindings = <
-                                &kp ESC      &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y               &kp U        &kp I        &kp O        &kp P        &kp BSPC
-                                &kp TAB      &kp A        &kp S        &kp D        &kp F        &kp G            &kp H               &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
-                                &kp LSHFT    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N               &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
-                                                                       &kp LCTRL    &mt LALT DEL &lt NavNum SPACE &lt NavAppNav SPACE &kp RGUI     &td0
+                                &kp ESC      &kp Q        &kp W        &kp E     &kp R        &kp T             &kp Y             &kp U    &kp I        &kp O        &kp P        &kp BSPC
+                                &kp TAB      &kp A        &kp S        &kp D     &kp F        &kp G             &kp H             &kp J    &kp K        &kp L        &kp SQT      &kp ENTER
+                                &kp LSHFT    &kp Z        &kp X        &kp C     &kp V        &kp B             &kp N             &kp M    &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
+                                                                       &kp LCTRL &mt LALT DEL &lt NAV_NUM SPACE &lt NAV_NUM SPACE &kp RGUI &ld_ble_game
                         >;
                 };
               
-                Gaming {
+                GAMING {
                         bindings = <
-                                &kp ESC      &kp Q        &kp W        &kp E        &kp R             &kp T        &kp Y           &kp U        &kp I        &kp O        &kp P        &kp BSPC
-                                &kp TAB      &kp A        &kp S        &kp D        &kp F             &kp G        &kp H           &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
-                                &kp LSHFT    &kp Z        &kp X        &kp C        &kp V             &kp B        &kp N           &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
-                                                                       &mo NavNum   &mo ControlGroups &kp SPACE    &lt NavNum C_PP &kp C_NEXT   &to Base
+                                &kp ESC      &kp Q        &kp W        &kp E     &kp R                &kp T     &kp Y             &kp U        &kp I        &kp O        &kp P        &kp BSPC
+                                &kp TAB      &kp A        &kp S        &kp D     &kp F                &kp G     &kp H             &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
+                                &kp LSHFT    &kp Z        &kp X        &kp C     &kp V                &kp B     &kp N             &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
+                                                                       &kp LCTRL &lt CTRL_GROUPS LALT &kp SPACE &lt NAV_NUM SPACE &music_dance &ld_ble_base
                         >;                
                 };
+
+                CTRL_GROUPS {
+                        bindings = <
+                                &trans      &kp N1       &kp N2       &kp N3     &kp N4     &kp N5       &trans       &trans       &trans       &trans       &trans       &trans       
+                                &trans      &kp LC(N1)   &kp LC(N2)   &kp LC(N3) &kp LC(N4) &kp LC(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                &trans      &kp LS(N1)   &kp LS(N2)   &kp LS(N3) &kp LS(N4) &kp LS(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                                                      &trans     &trans     &trans       &trans       &trans       &trans       
+
+                       >; 
+                };
                
-                NavNum {
+                NAV_NUM {
                         bindings = <
-                                &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &kp LPAR              &kp RPAR              &kp N7       &kp N8       &kp N9       &kp DEL      &kp BSPC     
-                                &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &kp LBRC              &kp RBRC              &kp N4       &kp N5       &kp N6       &kp SEMI     &kp ENTER    
-                                &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &kp LBKT              &kp RBKT              &kp N1       &kp N2       &kp N3       &kp BSLH     &kp RSHFT    
-                                                                       &trans       &trans       &trans                &lt NumCharFunc SPACE &kp N0       &kp DOT       
+                                &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &kp LPAR               &kp RPAR               &kp N7       &kp N8       &kp N9       &kp DEL      &kp BSPC     
+                                &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &kp LBRC               &kp RBRC               &kp N4       &kp N5       &kp N6       &kp SEMI     &kp ENTER    
+                                &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &kp LBKT               &kp RBKT               &kp N1       &kp N2       &kp N3       &kp BSLH     &kp RSHFT    
+                                                                       &trans       &kp LALT DEL &kp NUM_SYM_FUNC SPACE &lt NUM_SYM_FUNC SPACE &kp N0       &kp DOT       
                         >;
                 };
 
-                NavAppNav {
-                        bindings = <
-                                &kp GRAVE    &kp HOME     &kp UP       &kp END      &kp PLUS     &thislinepairparen    &kp LC(LS(TAB))       &kp LC(TAB)      &kp HOME         &kp UP     &kp END          &kp BSPC     
-                                &kp TAB      &kp LEFT     &kp DOWN     &kp RIGHT    &kp EQUAL    &thislinepairbraces   &kp LA(LEFT)          &kp LA(RIGHT)    &kp LEFT         &kp DOWN   &kp RIGHT        &kp PAGE_UP    
-                                &kp LSHFT    &kp PIPE     &kp UNDER    &kp COLON    &kp MINUS    &thislinepairbrackets &kp LC(LS(MINUS))     &kp LC(LS(PLUS)) &opentaskmanager &poptabchrome &openfolderincmd &kp PAGE_DOWN  
-                                                                       &trans       &trans       &lt NumCharFunc SPACE &trans                &trans           &trans       
-                        >;
-                };
-
-                NumCharFunc {
+                NUM_SYM_FUNC {
                         bindings = <
                                 &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp MINUS    &kp EQUAL    
                                 &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT    &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR     &kp UNDER    &kp PLUS   
                                 &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6       &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12    
-                                                                       &kp CAPS     &kp C_PP     &trans       &trans       &kp C_PREV   &kp C_NEXT     
+                                                                       &trans       &trans       &trans       &trans       &trans       &trans     
                         >;
                 };
-
-                AppNavMacro {
+  
+                BLUETOOTH {
                         bindings = <
-                                &kp LA(F4)    &kp HOME         &kp UP        &kp END          &kp LC(LS(TAB))   &kp LC(TAB)      &selectionpairparen    &addspacedown            &removecharacterdown   &movelineup        &movelinedown        &poptabvscode       
-                                &kp PG_UP     &kp LEFT         &kp DOWN      &kp RIGHT        &kp LA(LEFT)      &kp LA(RIGHT)    &selectionpairbraces   &selectionpairinequality &selectionblockcomment &selectiondoend    &selectionpairquotes &selectline
-                                &kp PAGE_DOWN &opentaskmanager &poptabchrome &openfolderincmd &kp LC(LS(MINUS)) &kp LC(LS(PLUS)) &selectionpairbrackets &shifcontrolleft         &selectword            &shiftcontrolright &movemaxwindowleft   &movemaxwindowright
-                                                                             &trans           &trans            &trans           &to Gaming             &trans                   &trans
-   
-                        >;
-                };
-
-                ControlGroups {
-                        bindings = <
-                                &trans      &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &trans       &trans       &trans       &trans       &trans       &trans       
-                                &trans      &kp LC(N1)   &kp LC(N2)   &kp LC(N3)   &kp LC(N4)   &kp LC(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
-                                &trans      &kp LS(N1)   &kp LS(N2)   &kp LS(N3)   &kp LS(N4)   &kp LS(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
-                                                                      &trans       &trans       &trans       &trans       &trans       &trans       
-
-                       >; 
-                };  
-                Bluetooth {
-                        bindings = <
-                                &bt BT_CLR   &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &bluetoothstring       
+                                &bt BT_CLR   &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &ble_string       
                                 &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
                                 &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
                                                                        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 &trans       
