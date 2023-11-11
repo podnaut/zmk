@@ -56,6 +56,14 @@
             tapping-term-ms = <200>;
             bindings = <&kp LC(RIGHT)>, <&kp END>;
         };
+
+        grv_btooth: grv_btooth {
+            compatible = "zmk,behavior-tap-dance";
+            label = "GRV_BTOOTH";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp GRAVE>, <&mo BLUETOOTH>;
+        };
     };
 
     keymap {
@@ -72,10 +80,10 @@
 
         NAV_NUM {
             bindings = <   
-                &lctl_home       &kp UP          &rctl_end    &kp PLUS          &kp LPAR               &kp RPAR            &kp N7        &kp N8    &kp N9   &mo BLUETOOTH
+                &lctl_home       &kp UP          &rctl_end    &kp PLUS          &kp LPAR               &kp RPAR            &kp N7        &kp N8    &kp N9   &grv_btooth
                 &kp LEFT         &kp DOWN        &kp RIGHT    &kp EQUAL         &kp LBRC               &kp RBRC            &kp N4        &kp N5    &kp N6   &kp SEMI
                 &mt LSHIFT MINUS &kp PIPE        &kp UNDER    &kp MINUS         &kp LBKT               &kp RBKT            &kp N1        &kp N2    &kp N3   &mt RSHIFT BSLH
-                                                              &trans            &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC N0 &trans
+                                                              &trans            &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC N0 &mt LALT N0
             >;
         };
 
