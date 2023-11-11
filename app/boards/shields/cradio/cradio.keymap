@@ -6,73 +6,56 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define BASE 0
-#define NAVNUM 1
-#define NUMSYMFUNC 2
-#define MODNAV 3
-#define UTILITY 4
+#define NAV_NUM 1
+#define NUM_SYM_FUNC 2
+#define BLUETOOTH 3
 
 / { 
     macros {
         bluetoothstring: bluetoothstring {
             compatible = "zmk,behavior-macro";
-            label = "ZM_bluetoothstring";
+            label = "BLUETOOTHSTRING";
             #binding-cells = <0>;
             wait-ms = <5>;
             tap-ms = <5>;
             bindings = <&kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H >;
         };  
-        desktopnav: bluetoothstring {
-            compatible = "zmk,behavior-macro";
-            label = "ZM_bluetoothstring";
-            #binding-cells = <0>;
-            wait-ms = <5>;
-            tap-ms = <5>;
-            bindings = <&kp LG(TAB)>;
-        };
-        desktopright: desktopright {
-            compatible = "zmk,behavior-macro";
-            label = "ZM_desktopright";
-            #binding-cells = <0>;
-            wait-ms = <5>;
-            tap-ms = <5>;
-            bindings = <&kp LG(LC(RIGHT))>;
-        };    
-        desktopleft: desktopleft {
-            compatible = "zmk,behavior-macro";
-            label = "ZM_desktopleft";
-            #binding-cells = <0>;
-            wait-ms = <5>;
-            tap-ms = <5>;
-            bindings = <&kp LG(LC(LEFT))>;
-        };    
-        desktopclose: desktopnew {
-            compatible = "zmk,behavior-macro";
-            label = "ZM_desktopclose";
-            #binding-cells = <0>;
-            wait-ms = <5>;
-            tap-ms = <5>;
-            bindings = <&kp LG(LC(D))>;
-        };    
     };
 };
 
 / {
     behaviors {
-        td0: tap_dance_0 {
+        q_esc: q_esc {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
+            label = "Q_ESC";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp Q>, <&kp ESC>;
         };
 
-        td1: tap_dance_1 {
+        a_tab: a_tab {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_1";
+            label = "A_TAB";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp F1>, <&mo UTILITY>;
-            };
+            bindings = <&kp A>, <&kp TAB>;
+        };
+
+        lctl_home: lctl_home {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LCTL_HOME";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LC(LEFT)>, <&kp HOME>;
+        };
+
+        rctl_end: rctl_end {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RCTL_END";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LC(RIGHT)>, <&kp END>;
+        };
     };
 
     keymap {
@@ -80,47 +63,38 @@
 
         BASE {
             bindings = <
-                &td0            &kp W        &kp E        &kp R             &kp T                &kp Y               &kp U         &kp I      &kp O    &kp P
-                &kp A           &kp S        &kp D        &kp F             &kp G                &kp H               &kp J         &kp K      &kp L    &kp SQT
+                &q_esc          &kp W        &kp E        &kp R             &kp T                &kp Y               &kp U         &kp I      &kp O    &kp P
+                &a_tab          &kp S        &kp D        &kp F             &kp G                &kp H               &kp J         &kp K      &kp L    &kp SQT
                 &mt LSHIFT Z    &kp X        &kp C        &kp V             &kp B                &kp N               &kp M         &kp COMMA  &kp DOT  &mt RSHIFT FSLH
-                                                          &mt LCTRL TAB     &lt NAVNUM ENTER     &lt NAVNUM SPACE    &lt MODNAV BSPC           
+                                                          &mt LCTRL DEL     &lt NAV_NUM ENTER    &lt NAV_NUM SPACE   &mt LALT BSPC           
             >;
         };
 
-        NAVNUM {
+        NAV_NUM {
             bindings = <   
-                &kp PLUS         &kp HOME        &kp UP       &kp END           &kp LPAR             &kp RPAR             &kp N7        &kp N8    &kp N9   &kp DEL
-                &kp EQUAL        &kp LEFT        &kp DOWN     &kp RIGHT         &kp LBRC             &kp RBRC             &kp N4        &kp N5    &kp N6   &kp SEMI
-                &mt LSHIFT MINUS &kp PIPE        &kp UNDER    &kp GRAVE         &kp LBKT             &kp RBKT             &kp N1        &kp N2    &kp N3   &mt RSHIFT BSLH
-                                                              &trans            &lt NUMSYMFUNC ENTER &lt NUMSYMFUNC SPACE &mt RCTRL N0
+                &lctl_home       &kp UP          &rctl_end    &kp PLUS          &kp LPAR               &kp RPAR            &kp N7        &kp N8    &kp N9   &mo BLUETOOTH
+                &kp LEFT         &kp DOWN        &kp RIGHT    &kp EQUAL         &kp LBRC               &kp RBRC            &kp N4        &kp N5    &kp N6   &kp SEMI
+                &mt LSHIFT MINUS &kp PIPE        &kp UNDER    &kp MINUS         &kp LBKT               &kp RBKT            &kp N1        &kp N2    &kp N3   &mt RSHIFT BSLH
+                                                              &trans            &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC N0 &trans
             >;
         };
 
-        NUMSYMFUNC {
+        NUM_SYM_FUNC {
             bindings = <
                 &kp N1          &kp N2       &kp N3       &kp N4            &kp N5               &kp N6               &kp N7        &kp N8    &kp N9   &kp N0      
                 &kp EXCL        &kp AT       &kp HASH     &kp DLLR          &kp PRCNT            &kp CARET            &kp AMPS      &kp ASTRK &kp LPAR &kp RPAR  
-                &td1            &kp F2       &kp F3       &kp F4            &kp F5               &kp F6               &kp F7        &kp F8    &kp F9   &kp F10   
-                                                          &kp CAPS          &trans               &trans               &kp C_PP     
+                &kp F1          &kp F2       &kp F3       &kp F4            &kp F5               &kp F6               &kp F7        &kp F8    &kp F9   &kp F10   
+                                                          &kp CAPS          &trans               &trans               &trans     
             >;
         };
 
-        MODNAV {
-            bindings = <
-                &kp ESC         &trans       &kp UP       &trans            &trans               &trans               &trans        &trans       &trans        &kp BSPC        
-                &kp TAB         &kp LEFT     &kp DOWN     &kp RIGHT         &trans               &trans               &trans        &trans       &trans        &kp ENTER       
-                &kp LSHIFT      &trans       &trans       &trans            &trans               &trans               &desktopnav   &desktopleft &desktopright &kp RSHIFT  
-                                                          &kp LCTRL         &kp LALT             &kp RGUI             &trans         
-            >;              
-        }; 
- 
-        UTILITY { 
+        BLUETOOTH { 
             bindings = < 
-                &trans          &trans       &trans       &trans            &trans               &bt BT_SEL 0         &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        
-                &trans          &trans       &trans       &trans            &trans               &trans               &trans         &trans       &trans       &bluetoothstring       
-                &trans          &trans       &trans       &trans            &trans               &trans               &trans         &trans       &trans       &bt BT_CLR        
-                                                          &trans            &trans               &trans               &trans         
-            >;             
+                &bt BT_SEL 0     &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3      &bt BT_SEL 4         &trans               &trans         &trans       &trans       &trans       
+                &bluetoothstring &trans       &trans       &trans            &trans               &trans               &trans         &trans       &trans       &trans       
+                &bt BT_CLR       &trans       &trans       &trans            &trans               &trans               &trans         &trans       &trans       &trans  
+                                                           &trans            &trans               &trans               &trans         
+            >;              
         };
     };
 };
