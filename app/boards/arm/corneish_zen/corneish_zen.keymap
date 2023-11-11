@@ -16,52 +16,136 @@
   };
 };
 
+#define BASE 0
+#define GAMING 1
+#define CTRL_GROUPS 2
+#define NAV_NUM 3
+#define NUM_SYM_FUNC 4
+#define BLUETOOTH 5
+
 / {
-        keymap {
+        macros {
+                ble_string: ble_string {
+                        compatible = "zmk,behavior-macro";
+                        label = "ZM_ble_string";
+                        #binding-cells = <0>;
+                        wait-ms = <5>;
+                        tap-ms = <5>;
+                        bindings = <&kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H >                          
+                                 ;
+                }; 
+        };
+};
+ 
+/ {
+        behaviors {
+                music_dance: music_dance {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "MUSIC_DANCE";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
+                };
+
+                ld_ble_game: ld_ble_game {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "LD_BLE_GAME";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&mo BLUETOOTH>, <&mo BLUETOOTH>, <&tog GAMING>;
+                };
+
+                ctrl_left_home: ctrl_left_home {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "CTRL_LEFT_HOME";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp LC(LEFT)>, <&kp HOME>;    
+                };
+
+                ctrl_right_end: ctrl_right_end {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "CTRL_RIGHT_END";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp LC(RIGHT)>, <&kp END>;    
+                };
+
+                alt_tabber: alt_tabber{
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "ALT_TABBER";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp TAB>, <&kp LC(LA(TAB))>;    
+                };
+        };
+
+};
+
+/ {
+         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
+                BASE {
                         label = "QWERTY";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                                &kp ESC      &kp Q        &kp W        &kp E     &kp R        &kp T             &kp Y             &kp U    &kp I        &kp O        &kp P        &kp BSPC
+                                &kp TAB      &kp A        &kp S        &kp D     &kp F        &kp G             &kp H             &kp J    &kp K        &kp L        &kp SQT      &kp ENTER
+                                &kp LSHFT    &kp Z        &kp X        &kp C     &kp V        &kp B             &kp N             &kp M    &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
+                                                                       &kp LCTRL &mt LALT DEL &lt NAV_NUM SPACE &lt NAV_NUM SPACE &kp RGUI &ld_ble_game
                         >;
                 };
-                lower_layer {
-                        label = "NUMBER";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+              
+                GAMING {
+                        label = "GAMING";
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+                                &kp ESC      &kp Q        &kp W        &kp E   &kp R           &kp T     &kp Y             &kp U        &kp I        &kp O        &kp P        &kp BSPC
+                                &kp TAB      &kp A        &kp S        &kp D   &kp F           &kp G     &kp H             &kp J        &kp K        &kp L        &kp SQT      &kp ENTER
+                                &kp LSHFT    &kp Z        &kp X        &kp C   &kp V           &kp B     &kp N             &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp RSHFT
+                                                                       &trans  &mo CTRL_GROUPS &kp SPACE &lt NAV_NUM SPACE &music_dance &tog GAMING
+                        >;                
+                };
+
+                CTRL_GROUPS {
+                        label = "GROUPS";
+                        bindings = <
+                                &trans      &kp N1       &kp N2       &kp N3     &kp N4     &kp N5       &trans       &trans       &trans       &trans       &trans       &trans       
+                                &alt_tabber &kp LC(N1)   &kp LC(N2)   &kp LC(N3) &kp LC(N4) &kp LC(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                &trans      &kp LS(N1)   &kp LS(N2)   &kp LS(N3) &kp LS(N4) &kp LS(N5)   &trans       &trans       &trans       &trans       &trans       &trans       
+                                                                      &trans     &trans     &trans       &trans       &trans       &trans       
+
+                       >; 
+                };
+               
+                NAV_NUM {
+                        label = "NAVNUM";
+                        bindings = <
+                                &kp GRAVE    &ctrl_left_home &kp UP    &ctrl_right_end &kp PLUS     &kp LPAR               &kp RPAR               &kp N7       &kp N8       &kp N9       &kp DEL      &kp BSPC     
+                                &kp TAB      &kp LEFT        &kp DOWN  &kp RIGHT       &kp EQUAL    &kp LBRC               &kp RBRC               &kp N4       &kp N5       &kp N6       &kp SEMI     &kp ENTER    
+                                &kp LSHFT    &kp PIPE        &kp UNDER &kp COLON       &kp MINUS    &kp LBKT               &kp RBKT               &kp N1       &kp N2       &kp N3       &kp BSLH     &kp RSHFT    
+                                                                       &trans          &mt LALT DEL &lt NUM_SYM_FUNC SPACE &lt NUM_SYM_FUNC SPACE &kp N0       &music_dance       
                         >;
                 };
 
-                raise_layer {
-                        label = "SYMBOL";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+                NUM_SYM_FUNC {
+                        label = "NSFUNC";
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+                                &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp MINUS    &kp EQUAL    
+                                &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT    &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR     &kp UNDER    &kp PLUS   
+                                &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6       &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12    
+                                                                       &kp CAPS     &trans       &trans       &trans       &trans       &trans     
                         >;
                 };
+  
+                BLUETOOTH {
+                        label = "BTOOTH";
+                        bindings = <
+                                &bt BT_CLR   &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &ble_string       
+                                &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
+                                &trans       &trans       &trans       &trans        &trans        &trans        &trans        &trans       &trans   &trans       &trans       &trans       
+                                                                       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 &trans       
+
+                       >; 
+                };                              
         };
 };
