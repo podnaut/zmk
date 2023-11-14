@@ -5,104 +5,105 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define QWERTY 0
-#define MOD_DH 1
-#define NAV_NUM 2
-#define NUM_SYM_FUNC 3
-#define BLUETOOTH 4
+#define _QWERTY 0
+#define _CLMKdh 1
+#define _NAVNUM 2
+#define _USFUNC 3
+#define _BTOOTH 4
 
 / { 
     macros {
-        bluetoothstring: bluetoothstring {
+        bt_str: bluetooth_string {
             compatible = "zmk,behavior-macro";
-            label = "BLUETOOTHSTRING";
+            label = "BLUETOOTH_STRING";
             #binding-cells = <0>;
             wait-ms = <20>;
             tap-ms = <5>;
             bindings = <&kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H >;
-        };  
+        };   
 
-        email_string: email_string {
+        em_str: email_string {
             compatible = "zmk,behavior-macro";
             label = "EMAIL_STRING";
             #binding-cells = <0>;
             wait-ms = <20>;
             tap-ms = <5>;
             bindings = <&kp M &kp B &kp I &kp S &kp S &kp O &kp N &kp N &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M >;
-        };          
+        };         
     };
 };
 
 / {
     behaviors {
-        ctrlLeft_home: ctrlLeft_home {
+        td_cl_home: td_ctrl_left_home {
               compatible = "zmk,behavior-tap-dance";
-              label = "CTRLLEFT_HOME";
+              label = "TD_CTRL_LEFT_HOME";
               #binding-cells = <0>;
               tapping-term-ms = <200>;
               bindings = <&kp LC(LEFT)>, <&kp HOME>;
         };
 
 
-        ctrlRight_end: ctrlRight_end {
+        td_cr_end: td_ctrl_right_end {
               compatible = "zmk,behavior-tap-dance";
-              label = "CTRLRIGHT_END";
+              label = "TD_CTRL_RIGHT_END";
               #binding-cells = <0>;
               tapping-term-ms = <200>;
               bindings = <&kp LC(RIGHT)>, <&kp END>;
         };
        
-        esc_switch: esc_switch {
+        td_esc_mtsk: td_esc_multitasker {
             compatible = "zmk,behavior-tap-dance";
-            label = "ESC_SWITCH";
+            label = "TD_ESC_MULTITASKER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp ESC>, <&kp LC(LA(TAB))>;
         };
 
-        q_esc: q_esc {
+
+        td_q_esc: td_q_esc {
             compatible = "zmk,behavior-tap-dance";
-            label = "Q_ESC";
+            label = "TD_Q_ESC";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp Q>, <&kp ESC>;
         };
 
-        a_tab: a_tab {
+        td_a_tab: td_a_tab {
             compatible = "zmk,behavior-tap-dance";
-            label = "A_TAB";
+            label = "TD_A_TAB";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp A>, <&kp TAB>;
         };       
 
-        pp_nxt_prv: pp_nxt_prv {
+        td_pp_nxt_prv: td_play_pause_next_prev {
              compatible = "zmk,behavior-tap-dance";
-             label = "PP_NXT_PRV";
+             label = "TD_PLAY_PAUSE_NEXT_PREV";
              #binding-cells = <0>;
              tapping-term-ms = <200>;
              bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
         };
 
-        email_bluetooth: email_bluetooth {
+        td_em_bt: td_email_string_bt_toggle {
              compatible = "zmk,behavior-tap-dance";
-             label = "EMAIL_BLUETOOTH";  
+             label = "TD_EMAIL_STRING_BT_TOGGLE";  
              #binding-cells = <0>;
              tapping-term-ms = <200>;
-             bindings = <&email_string>, <&mo BLUETOOTH>;
+             bindings = <&none>, <&em_str>, <&mo _BTOOTH>;
         };
 
-        lcb: l_brc_bkt {        
+        mm_btb_l: mm_brace_to_bracket_left {        
             compatible = "zmk,behavior-mod-morph";
-            label = "L_brc_BKT";
+            label = "MM_BRACE_TO_BRACKET_LEFT";
             #binding-cells = <0>;
             bindings = <&kp LBRC>, <&kp LBKT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-       rcb: r_brc_bkt {        
+        mm_btb_r: mm_brace_to_bracket_right {        
             compatible = "zmk,behavior-mod-morph";
-            label = "R_BRC_BKT";
+            label = "MM_BRACE_TO_BRACKET_RIGHT";
             #binding-cells = <0>;
             bindings = <&kp RBRC>, <&kp RBKT>;
             mods = <(MOD_LSFT|MOD_RSFT)>; 
@@ -112,53 +113,53 @@
     keymap {
         compatible = "zmk,keymap";
 
-        QWERTY {
+        _QWERTY {
             label = "QWERTY";
             bindings = <
-                &q_esc       &kp W &kp E &kp R         &kp T             &kp Y             &kp U         &kp I     &kp O   &kp P
-                &a_tab       &kp S &kp D &kp F         &kp G             &kp H             &kp J         &kp K     &kp L   &kp SQT
-                &mt LSHIFT Z &kp X &kp C &kp V         &kp B             &kp N             &kp M         &kp COMMA &kp DOT &mt RSHIFT FSLH
-                                         &mt LCTRL DEL &lt NAV_NUM ENTER &lt NAV_NUM SPACE &mt LALT BSPC           
+                &td_q_esc     &kp W  &kp E  &kp R          &kp T              &kp Y              &kp U          &kp I      &kp O    &kp P
+                &td_a_tab     &kp S  &kp D  &kp F          &kp G              &kp H              &kp J          &kp K      &kp L    &kp SQT
+                &mt LSHIFT Z  &kp X  &kp C  &kp V          &kp B              &kp N              &kp M          &kp COMMA  &kp DOT  &mt RSHIFT FSLH
+                                            &mt LCTRL DEL  &lt _NAVNUM ENTER  &lt _NAVNUM SPACE  &mt LALT BSPC            
             >;
         };                                             
         
-        MOD_DH {
-            label = "MOD_DH";
+        _CLMKDH {
+            label = "CLMKDH";
             bindings = <
-                &q_esc       &kp W &kp F &kp P  &kp B  &kp J  &kp L  &kp U     &kp Y   &kp SQT
-                &a_tab       &kp R &kp S &kp T  &kp G  &kp M  &kp N  &kp E     &kp I   &kp O
-                &mt LSHIFT Z &kp X &kp C &kp D  &kp V  &kp K  &kp H  &kp COMMA &kp DOT &mt RSHIFT FSLH
-                                         &trans &trans &trans &trans          
+                &td_q_esc     &kp W  &kp F  &kp P   &kp B   &kp J   &kp L   &kp U      &kp Y    &kp SQT
+                &td_a_tab     &kp R  &kp S  &kp T   &kp G   &kp M   &kp N   &kp E      &kp I    &kp O
+                &mt LSHIFT Z  &kp X  &kp C  &kp D   &kp V   &kp K   &kp H   &kp COMMA  &kp DOT  &mt RSHIFT FSLH
+                                            &trans  &trans  &trans  &trans          
             >;
         };
 
-        NAV_NUM {
+        _NAVNUM {
             label = "NAVNUM";
             bindings = <   
-                &esc_switch      &ctrlLeft_home &kp UP      &ctrlRight_end    &kp LPAR               &kp RPAR               &kp N7 &kp N8 &kp N9 &kp LC(DEL)     
-                &kp TAB          &kp LEFT       &kp DOWN    &kp RIGHT         &lcb                   &rcb                   &kp N4 &kp N5 &kp N6 &kp SEMI
-                &mt LSHIFT EQUAL &kp UNDER      &kp COLON   &kp MINUS         &kp PLUS               &kp PIPE               &kp N1 &kp N2 &kp N3 &mt LSHIFT BSLH 
-                                                            &mt LCTRL DEL &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC SPACE &mt LGUI N0
+                &td_esc_mtsk      &td_cl_home  &kp UP     &td_cr_end     &kp LPAR           &kp RPAR           &kp N7       &kp N8  &kp  N9  &kp LC(DEL)     
+                &kp TAB           &kp LEFT     &kp DOWN   &kp RIGHT      &mm_btb_l          &mm_btb_r          &kp N4       &kp N5  &kp  N6  &kp SEMI
+                &mt LSHIFT EQUAL  &kp UNDER    &kp COLON  &kp MINUS      &kp PLUS           &kp PIPE           &kp N1       &kp N2  &kp  N3  &mt LSHIFT BSLH 
+                                                          &mt LCTRL DEL  &lt _USFUNC ENTER  &lt _USFUNC SPACE  &mt LGUI N0
             >;
         };
 
-        NUM_SYM_FUNC {
-            label = "NSFUNC";
+        _USFUNC {
+            label = "USFUNC";
             bindings = <
-                &kp CAPS &kp GRAVE &kp TILDE &kp C_BRI_DN &kp C_BRI_AUTO &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &pp_nxt_prv &email_bluetooth    
-                &kp EXCL &kp AT    &kp HASH  &kp DLLR     &kp PRCNT      &kp CARET  &kp AMPS     &kp ASTRK    &kp MINUS   &kp PLUS  
-                &kp F1   &kp F2    &kp F3    &kp F4       &kp F5         &kp F6     &kp F7       &kp F8       &kp F9      &kp F10   
-                                             &kp F11      &trans         &trans     &kp F12 
+                &kp CAPS  &kp GRAVE  &kp TILDE  &kp C_BRI_DN  &kp C_BRI_AUTO  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &td_pp_nxt_prv  &td_em_bt    
+                &kp EXCL  &kp AT     &kp HASH   &kp DLLR      &kp PRCNT       &kp CARET   &kp AMPS      &kp ASTRK     &kp MINUS       &kp PLUS  
+                &kp F1    &kp F2     &kp F3     &kp F4        &kp F5          &kp F6      &kp F7        &kp F8        &kp F9          &kp F10   
+                                                &kp F11       &trans          &trans      &kp F12 
             >;
         };
 
-        BLUETOOTH { 
+        _BTOOTH { 
             label = "BTOOTH";
             bindings = < 
-                &bt BT_SEL 0     &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &trans &trans       
-                &bluetoothstring &trans       &trans       &trans       &trans       &trans &trans &trans &trans &trans       
-                &bt BT_CLR       &trans       &trans       &trans       &trans       &trans &trans &trans &trans &trans  
-                                                           &tog MOD_DH  &trans       &trans &trans 
+                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans       
+                &bt_str       &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans       
+                &bt BT_CLR    &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  
+                                                          &tog _CLMKdh  &trans        &trans  &trans 
             >;              
         };
     };
