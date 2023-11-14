@@ -92,36 +92,20 @@
              bindings = <&email_string>, <&mo BLUETOOTH>;
         };
 
-        under_minus: under_minus {        
+        lcb: l_brc_bkt {        
             compatible = "zmk,behavior-mod-morph";
-            label = "UNDER_MINUS";
+            label = "L_brc_BKT";
             #binding-cells = <0>;
-            bindings = <&kp UNDER>, <&kp MINUS>;
+            bindings = <&kp LBRC>, <&kp LBKT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        colon_plus: colon_plus {        
+       rcb: r_brc_bkt {        
             compatible = "zmk,behavior-mod-morph";
-            label = "COLON_PLUS";
+            label = "R_BRC_BKT";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp PLUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };  
-
-        pipe_equals: pipe_equals {        
-            compatible = "zmk,behavior-mod-morph";
-            label = "PIPE_EQUALS";
-            #binding-cells = <0>;
-            bindings = <&kp PIPE>, <&kp EQUAL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        cbr_par_bkt: cbr_par_bkt {        
-            compatible = "zmk,behavior-mod-morph";
-            label = "CBR_PAR_BKT";
-            #binding-cells = <0>;
-            bindings = <&kp PIPE>, <&kp EQUAL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&kp RBRC>, <&kp RBKT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>; 
         };
     };
 
@@ -151,10 +135,10 @@
         NAV_NUM {
             label = "NAVNUM";
             bindings = <   
-                &esc_switch      &ctrlLeft_home &kp UP      &ctrlRight_end    &kp LPAR               &kp RPAR               &kp N7 &kp N8 &kp N9 &kp LC(BSPC)     
-                &kp TAB          &kp LEFT       &kp DOWN    &kp RIGHT         &kp LBRC               &kp RBRC               &kp N4 &kp N5 &kp N6 &kp SEMI
-                &mt LSHIFT LC(Y) &pipe_equals   &colon_plus &under_minus      &kp LBKT               &kp RBKT               &kp N1 &kp N2 &kp N3 &mt LSHIFT BSLH 
-                                                            &mt RCTRL LC(DEL) &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC SPACE &mt LGUI N0
+                &esc_switch      &ctrlLeft_home &kp UP      &ctrlRight_end    &kp LPAR               &kp RPAR               &kp N7 &kp N8 &kp N9 &kp LC(DEL)     
+                &kp TAB          &kp LEFT       &kp DOWN    &kp RIGHT         &lcb                   &rcb                   &kp N4 &kp N5 &kp N6 &kp SEMI
+                &mt LSHIFT EQUAL &kp UNDER      &kp COLON   &kp MINUS         &kp PLUS               &kp PIPE               &kp N1 &kp N2 &kp N3 &mt LSHIFT BSLH 
+                                                            &mt LCTRL DEL &lt NUM_SYM_FUNC ENTER &lt NUM_SYM_FUNC SPACE &mt LGUI N0
             >;
         };
 
