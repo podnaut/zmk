@@ -7,7 +7,7 @@
  #include <behaviors.dtsi>
  #include <dt-bindings/zmk/keys.h>
  #include <dt-bindings/zmk/bt.h>
- 
+
 #define _34BASE 0
 #define _CLMKdh 1
 #define _42MODS 2
@@ -205,7 +205,7 @@
                 &kp ESC    &kp Q   &kp W   &kp E         &kp R        &kp T      &kp Y              &kp U          &kp I           &kp O    &kp P      &kp BSPC
                 &kp TAB    &kp A   &kp S   &kp D         &kp F        &kp G      &kp H              &kp J          &kp K           &kp L    &kp SQT    &kp ENTER
                 &kp LSHFT  &kp Z   &kp X   &kp C         &kp V        &kp B      &kp N              &kp M          &kp COMMA       &kp DOT  &kp SLASH  &kp RSHFT
-                &trans     &none   &trans  &mo _CAMGRP  &td_ctg_cmg   &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING   &td_pp_nxt_prv  &trans   &none      &trans  
+                &trans     &none   &trans  &mo _CAMGRP   &td_ctg_cmg  &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING   &td_pp_nxt_prv  &trans   &none      &trans  
             >;                
         };
 
