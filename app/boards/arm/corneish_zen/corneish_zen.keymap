@@ -107,12 +107,12 @@
             bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
         };
 
-        td_em_bt: td_email_string_bt_toggle {
+        td_ctg_cmg: td_ctlgrp_camgrp {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_EMAIL_STRING_BT_TOGGLE";  
+            label = "TD_CTLGRP_CAMGRP";  
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&none>, <&em_str>, <&mo _BTOOTH>;
+            bindings = <&mo _CTLGRP>, <&mo _CAMGRP>;
         };
 
         mm_btb_l: mm_brace_to_bracket_left {        
@@ -201,7 +201,7 @@
                 &kp ESC    &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y                                      &kp U          &kp I           &kp O    &kp P      &kp BSPC
                 &kp TAB    &kp A  &kp S  &kp D  &kp F  &kp G        &kp H                                      &kp J          &kp K           &kp L    &kp SQT    &kp ENTER
                 &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N                                      &kp M          &kp COMMA       &kp DOT  &kp SLASH  &kp RSHFT
-                                                       &mo _CAMGRP  &mo _CTLGRP  &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING   &td_pp_nxt_prv
+                                                       &mo _CAMGRP  &td_ctg_cmg  &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING   &td_pp_nxt_prv
             >;                
         };
 
