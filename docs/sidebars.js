@@ -10,6 +10,7 @@ module.exports = {
     ],
     Features: [
       "features/keymaps",
+      "features/bluetooth",
       "features/combos",
       "features/conditional-layers",
       "features/debouncing",
@@ -34,6 +35,8 @@ module.exports = {
       "behaviors/tap-dance",
       "behaviors/caps-word",
       "behaviors/key-repeat",
+      "behaviors/sensor-rotate",
+      "behaviors/mouse-emulation",
       "behaviors/reset",
       "behaviors/bluetooth",
       "behaviors/outputs",
@@ -57,6 +60,7 @@ module.exports = {
       "config/backlight",
       "config/battery",
       "config/behaviors",
+      "config/bluetooth",
       "config/combos",
       "config/displays",
       "config/encoders",
@@ -68,6 +72,7 @@ module.exports = {
     ],
     Development: [
       "development/clean-room",
+      "development/pre-commit",
       "development/documentation",
       "development/setup",
       "development/build-flash",

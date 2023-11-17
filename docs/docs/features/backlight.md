@@ -16,7 +16,7 @@ Unlike [RGB Underglow](underglow.md), backlight can only control single color LE
 
 To enable backlight on your board or shield, add the following line to your `.conf` file of your user config directory as such:
 
-```
+```ini
 CONFIG_ZMK_BACKLIGHT=y
 ```
 
@@ -46,7 +46,7 @@ values={[
 
 First, you must enable PWM by adding the following lines to your `Kconfig.defconfig` file:
 
-```
+```kconfig
 if ZMK_BACKLIGHT
 
 config PWM
@@ -60,11 +60,11 @@ endif # ZMK_BACKLIGHT
 
 Then you have to add the following lines to your `.dts` file:
 
-```
+```dts
 &pwm0 {
-	status = "okay";
-	ch0-pin = <45>;
-	/* ch0-inverted; */
+    status = "okay";
+    ch0-pin = <45>;
+    /* ch0-inverted; */
 };
 ```
 
@@ -77,14 +77,14 @@ If your board uses a P-channel MOSFET to control backlight instead of a N-channe
 
 Then you have to add the following lines inside the root devicetree node on the same file as before:
 
-```
+```dts
 / {
     backlight: pwmleds {
         compatible = "pwm-leds";
         label = "Backlight LEDs";
         pwm_led_0 {
             pwms = <&pwm0 45>;
-        	label = "Backlight LED 0";
+            label = "Backlight LED 0";
         };
     };
 };
@@ -98,7 +98,7 @@ Note that every LED inside of the backlight node will be treated as a backlight 
 
 Finally you need to add backlight to the `chosen` element of the root devicetree node:
 
-```
+```dts
 / {
     chosen {
         zmk,backlight = &backlight;
@@ -113,7 +113,7 @@ You must first add a `boards/` directory within your shield folder. For each boa
 
 Inside your `<board>.defconfig` file, add the following lines:
 
-```
+```kconfig
 if ZMK_BACKLIGHT
 
 config PWM
@@ -127,11 +127,11 @@ endif # ZMK_BACKLIGHT
 
 Then add the following lines to your `.overlay` file:
 
-```
+```dts
 &pwm0 {
-	status = "okay";
-	ch0-pin = <45>;
-	/* ch0-inverted; */
+    status = "okay";
+    ch0-pin = <45>;
+    /* ch0-inverted; */
 };
 ```
 
@@ -144,14 +144,14 @@ If your shield uses a P-channel MOSFET to control backlight instead of a N-chann
 
 Then you have to add the following lines inside the root devicetree node on the same file:
 
-```
+```dts
 / {
     backlight: pwmleds {
         compatible = "pwm-leds";
         label = "Backlight LEDs";
         pwm_led_0 {
             pwms = <&pwm0 45>;
-        	label = "Backlight LED 0";
+            label = "Backlight LED 0";
         };
     };
 };
@@ -165,7 +165,7 @@ Note that every LED inside of the backlight node will be treated as a backlight 
 
 Finally you need to add backlight to the `chosen` element of the root devicetree node:
 
-```
+```dts
 / {
     chosen {
         zmk,backlight = &backlight;
@@ -175,14 +175,14 @@ Finally you need to add backlight to the `chosen` element of the root devicetree
 
 Optionally, on Pro Micro compatible shields you can add a LED GPIO node to your devicetree, this could be useful if you want your shield to be compatible with newer or untested boards. To do that you have to enable `CONFIG_LED_GPIO` in your `.conf` file and then add the following lines inside the root devicetree node of your `.dtsi` or `.dts` file:
 
-```
+```dts
 / {
     backlight: gpioleds {
         compatible = "gpio-leds";
         label = "Backlight LEDs";
         gpio_led_0 {
             gpios = <&pro_micro 20 GPIO_ACTIVE_HIGH>;
-        	label = "Backlight LED 0";
+            label = "Backlight LED 0";
         };
     };
 };
@@ -199,12 +199,12 @@ It is possible to control multiple backlight LEDs at the same time. This is usef
 
 In order to do that, first you need to enable PWM for each pin:
 
-```
+```dts
 &pwm0 {
-	status = "okay";
-	ch0-pin = <45>; /* LED 0 */
-	ch1-pin = <46>; /* LED 1 */
-	ch2-pin = <47>; /* LED 2 */
+    status = "okay";
+    ch0-pin = <45>; /* LED 0 */
+    ch1-pin = <46>; /* LED 1 */
+    ch2-pin = <47>; /* LED 2 */
     ...
 };
 ```
@@ -213,7 +213,7 @@ This part may vary based on your MCU as different MCUs may have a different numb
 
 Then you can simply add each of your LED to the backlight node:
 
-```
+```dts
 backlight: pwmleds {
     compatible = "pwm-leds";
     label = "Backlight LEDs";

@@ -137,9 +137,9 @@ The code snippet below shows the essential components of a new driver.
 #define DT_DRV_COMPAT zmk_<behavior_name>
 
 // Dependencies
-#include <device.h>
+#include <zephyr/device.h>
 #include <drivers/behavior.h>
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 
 #include <zmk/behavior.h>
 
@@ -258,8 +258,8 @@ An example of this can be seen below, taking the `#define KP_INST(n)` from the h
 #define KP_INST(n)                                                                                 \
     static struct behavior_hold_tap_config behavior_hold_tap_config_##n = {                        \
         .tapping_term_ms = DT_INST_PROP(n, tapping_term_ms),                                       \
-        .hold_behavior_dev = DT_LABEL(DT_INST_PHANDLE_BY_IDX(n, bindings, 0)),                     \
-        .tap_behavior_dev = DT_LABEL(DT_INST_PHANDLE_BY_IDX(n, bindings, 1)),                      \
+        .hold_behavior_dev = DT_PROP(DT_INST_PHANDLE_BY_IDX(n, bindings, 0), label),               \
+        .tap_behavior_dev = DT_PROP(DT_INST_PHANDLE_BY_IDX(n, bindings, 1), label),                \
         .quick_tap_ms = DT_INST_PROP(n, quick_tap_ms),                                             \
         .flavor = DT_ENUM_IDX(DT_DRV_INST(n), flavor),                                             \
         .retro_tap = DT_INST_PROP(n, retro_tap),                                                   \
@@ -357,7 +357,7 @@ For behaviors that do not require central locality, the following options for up
 
 For the purpose of this section, we will discuss the structure of `app/dts/behaviors/gresc.dtsi` below.
 
-```dtsi title="app/dts/behaviors/gresc.dtsi"
+```dts title="app/dts/behaviors/gresc.dtsi"
 /*
  * Copyright (c) 2020 The ZMK Contributors
  *
@@ -367,15 +367,15 @@ For the purpose of this section, we will discuss the structure of `app/dts/behav
 #include <dt-bindings/zmk/keys.h>
 
 / {
-	behaviors {
-		/omit-if-no-ref/ gresc: grave_escape {
-			compatible = "zmk,behavior-mod-morph";
-			label = "GRAVE_ESCAPE";
-			#binding-cells = <0>;
-			bindings = <&kp ESC>, <&kp GRAVE>;
+    behaviors {
+        /omit-if-no-ref/ gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            label = "GRAVE_ESCAPE";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
-		};
-	};
+        };
+    };
 };
 ```
 
@@ -383,7 +383,7 @@ The format of a behavior's `.dtsi` file is identical to declaring an instance of
 
 After creating the `.dtsi` from above, update `app/dts/behaviors.dtsi` to include your newly predefined behavior instance, making it accessible by the devicetree.
 
-```dtsi title="app/dts/behaviors.dtsi"
+```dts title="app/dts/behaviors.dtsi"
 #include <behaviors/key_press.dtsi>
 #include <behaviors/transparent.dtsi>
 #include <behaviors/none.dtsi>

@@ -4,20 +4,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <device.h>
-#include <devicetree.h>
-#include <init.h>
-#include <kernel.h>
-#include <drivers/sensor.h>
-#include <bluetooth/services/bas.h>
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/init.h>
+#include <zephyr/kernel.h>
+#include <zephyr/drivers/sensor.h>
+#include <zephyr/bluetooth/services/bas.h>
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include <zmk/event_manager.h>
 #include <zmk/battery.h>
 #include <zmk/events/battery_state_changed.h>
+#include <zmk/workqueue.h>
 
 static uint8_t last_state_of_charge = 0;
 
@@ -50,7 +51,7 @@ static int zmk_battery_update(const struct device *battery) {
 
     if (last_state_of_charge != state_of_charge.val1) {
         last_state_of_charge = state_of_charge.val1;
-
+#if IS_ENABLED(CONFIG_BT_BAS)
         LOG_DBG("Setting BAS GATT battery level to %d.", last_state_of_charge);
 
         rc = bt_bas_set_battery_level(last_state_of_charge);
@@ -59,7 +60,7 @@ static int zmk_battery_update(const struct device *battery) {
             LOG_WRN("Failed to set BAS GATT battery level (err %d)", rc);
             return rc;
         }
-
+#endif
         rc = ZMK_EVENT_RAISE(new_zmk_battery_state_changed(
             (struct zmk_battery_state_changed){.state_of_charge = last_state_of_charge}));
     }
@@ -77,7 +78,9 @@ static void zmk_battery_work(struct k_work *work) {
 
 K_WORK_DEFINE(battery_work, zmk_battery_work);
 
-static void zmk_battery_timer(struct k_timer *timer) { k_work_submit(&battery_work); }
+static void zmk_battery_timer(struct k_timer *timer) {
+    k_work_submit_to_queue(zmk_workqueue_lowprio_work_q(), &battery_work);
+}
 
 K_TIMER_DEFINE(battery_timer, zmk_battery_timer, NULL);
 
@@ -97,14 +100,7 @@ static int zmk_battery_init(const struct device *_arg) {
         return -ENODEV;
     }
 
-    int rc = zmk_battery_update(battery);
-
-    if (rc != 0) {
-        LOG_DBG("Failed to update battery value: %d.", rc);
-        return rc;
-    }
-
-    k_timer_start(&battery_timer, K_MINUTES(1), K_SECONDS(CONFIG_ZMK_BATTERY_REPORT_INTERVAL));
+    k_timer_start(&battery_timer, K_NO_WAIT, K_SECONDS(CONFIG_ZMK_BATTERY_REPORT_INTERVAL));
 
     return 0;
 }

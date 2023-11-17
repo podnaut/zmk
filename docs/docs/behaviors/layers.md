@@ -16,7 +16,7 @@ add a set of `#define`s at the top of your keymap file, and use those layer in y
 
 For example, if you have three layers, you can add the following to the top of your keymap:
 
-```
+```dts
 #define DEFAULT 0
 #define LOWER   1
 #define RAISE   2
@@ -37,7 +37,7 @@ again.
 
 Example:
 
-```
+```dts
 &mo LOWER
 ```
 
@@ -53,8 +53,24 @@ The "layer-tap" behavior enables a layer when a key is held, and outputs a [keyp
 
 Example:
 
-```
+```dts
 &lt LOWER SPACE
+```
+
+### Configuration
+
+You can configure a different tapping term or tweak other properties noted in the [hold-tap](hold-tap.md#advanced-configuration) documentation page in your keymap:
+
+```dts
+&lt {
+    tapping-term-ms = <200>;
+};
+
+/ {
+    keymap {
+        ...
+    };
+};
 ```
 
 :::info
@@ -77,7 +93,7 @@ The "to layer" behavior enables a layer and disables _all_ other layers _except_
 
 Example:
 
-```
+```dts
 &to 3
 ```
 
@@ -92,42 +108,42 @@ The "toggle layer" behavior enables a layer until the layer is manually disabled
 
 Example:
 
-```
+```dts
 &tog LOWER
 ```
 
 "Toggle layer" for a :
 
-```
+```dts
 #define DEFAULT 0
 #define NAVI    1
 
 #define NONE 0
 
 / {
-	keymap {
-		compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-		default_layer {
-			bindings = <
+        default_layer {
+            bindings = <
                 &tog NAVI       &kp KP_DIVIDE   &kp KP_MULTIPLY &kp KP_MINUS
                 &kp NUMBER_7    &kp NUMBER_8    &kp NUMBER_9    &kp KP_PLUS
                 &kp NUMBER_4    &kp NUMBER_5    &kp NUMBER_6    &kp KP_PLUS
                 &kp NUMBER_1    &kp NUMBER_2    &kp NUMBER_3    &kp RETURN
                 &kp NUMBER_0    &kp NUMBER_0    &kp DOT         &kp RETURN
-			>;
-		};
+            >;
+        };
 
-		nav_layer {
-			bindings = <
+        nav_layer {
+            bindings = <
                 &tog NAVI       &kp KP_DIVIDE   &kp KP_MULTIPLY &kp KP_MINUS
                 &kp HOME        &kp UP          &kp PAGE_UP     &kp KP_PLUS
                 &kp LEFT        &none           &kp RIGHT       &kp KP_PLUS
                 &kp END         &kp DOWN        &kp PAGE_DOWN   &kp RETURN
                 &kp INSERT      &kp INSERT      &kp DEL         &kp RETURN
             >;
-		};
-	};
+        };
+    };
 };
 ```
 
