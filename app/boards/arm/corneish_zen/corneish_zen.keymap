@@ -18,16 +18,17 @@
 
 #define _34BASE 0
 #define _CLMKdh 1
-#define _42MODS 2
-#define _NAVNUM 3
-#define _USFUNC 4
-#define _BTOOTH 5
-#define _GAMING 6
-#define _SCRAFT 7
-#define _CTLGR1 8
-#define _CTLGR2 9
-#define _CAMGR1 10
-#define _CAMGR2 11
+#define _MACMOD 2
+#define _42MODS 3
+#define _NAVNUM 4
+#define _USFUNC 5
+#define _BTOOTH 6
+#define _GAMING 7
+#define _SCRAFT 8
+#define _CTLGR1 9
+#define _CTLGR2 10
+#define _CAMGR1 11
+#define _CAMGR2 12
 
 / { 
     macros {                
@@ -47,16 +48,7 @@
             wait-ms = <20>;
             tap-ms = <5>;
             bindings = <&bt BT_SEL 0 &bt BT_CLR &bt BT_SEL 1 &bt BT_CLR &bt BT_SEL 2 &bt BT_CLR &bt BT_SEL 3 &bt BT_CLR &bt BT_SEL 4 &bt BT_CLR>;
-        };
-
-        em_str: email_string {
-            compatible = "zmk,behavior-macro";
-            label = "EMAIL_STRING";
-            #binding-cells = <0>;
-            wait-ms = <20>;
-            tap-ms = <5>;
-            bindings = <&kp M &kp B &kp I &kp S &kp S &kp O &kp N &kp N &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M >;
-        };         
+        };   
     };
 
     behaviors {
@@ -150,13 +142,23 @@
            >;
        };
 
+       _MACMOD {
+            label = "MACMOD";
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
+                                                &trans    &mt LGUI DEL  &trans  &trans  &mt LCTRL BSPC  &trans
+            >;
+        };
+
         _42MODS {
             label = "42MODS";
             bindings = <
-                &kp ESC   &kp Q  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp BSPC
-                &kp TAB   &kp A  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp ENTER
-                &kp LSHFT &kp Z  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &kp FSLH  &kp LSHFT
-                                                 &kp LALT  &trans  &trans  &trans  &trans  &kp LGUI
+                &kp ESC    &kp Q  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp BSPC
+                &kp TAB    &kp A  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp ENTER
+                &kp LSHFT  &kp Z  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &kp FSLH  &kp LSHFT
+                                                  &kp LALT  &trans  &trans  &trans  &trans  &kp LGUI
             >;
         };
         
@@ -183,9 +185,9 @@
         _BTOOTH {
             label = "BTOOTH";
             bindings = <
-                &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &tog _GAMING  &tog _42MODS  &trans  &tog _CLMKdh  &trans  &trans     
-                &trans  &bt_str       &trans        &trans        &trans        &trans                        &tog _SCRAFT  &trans        &trans  &trans        &trans  &trans  
-                &trans  &bt BT_CLR    &trans        &trans        &trans        &bootloader                   &trans        &trans        &trans  &trans        &trans  &trans  
+                &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &tog _GAMING  &tog _42MODS  &tog _MACMOD  &tog _CLMKdh  &trans  &trans     
+                &trans  &bt_str       &trans        &trans        &trans        &trans                        &tog _SCRAFT  &trans        &trans        &trans        &trans  &trans  
+                &trans  &bt BT_CLR    &trans        &trans        &trans        &bootloader                   &trans        &trans        &trans        &trans        &trans  &trans  
                                                                   &trans        &bt_clr_all   &trans  &trans  &trans        &trans 
             >; 
         };                              
