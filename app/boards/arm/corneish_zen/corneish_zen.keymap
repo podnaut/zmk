@@ -30,6 +30,9 @@
 #define _CAMGR1 11
 #define _CAMGR2 12
 
+&lt { quick_tap_ms = <200>; };
+&mt { quick_tap_ms = <200>; };
+
 / { 
     macros {                
         bt_str: bluetooth_string {

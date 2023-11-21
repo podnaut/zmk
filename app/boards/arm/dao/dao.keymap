@@ -22,6 +22,9 @@
 #define _CAMGR1 11
 #define _CAMGR2 12
 
+&lt { quick_tap_ms = <200>; };
+&mt { quick_tap_ms = <200>; };
+
 / { 
     macros {                
         bt_str: bluetooth_string {
@@ -117,130 +120,130 @@
         _34BASE {
             label = "34BASE";
             bindings = <
-                &none  &td_q_esc     &kp W  &kp E  &kp R  &kp T                                                       &kp Y          &kp U  &kp I      &kp O    &kp P            &none
-                &none  &td_a_tab     &kp S  &kp D  &kp F  &kp G                                                       &kp H          &kp J  &kp K      &kp L    &kp SQT          &none
-                &none  &mt LSHIFT Z  &kp X  &kp C  &kp V  &kp B                                                       &kp N          &kp M  &kp COMMA  &kp DOT  &mt RSHIFT FSLH  &none
-                                                          &none  &mt LCTRL DEL  &lt _NAVNUM ENTER  &lt _NAVNUM SPACE  &mt LALT BSPC  &none            
+                &none  &none  &td_q_esc     &kp W  &kp E  &kp R  &kp T                                                       &kp Y          &kp U  &kp I      &kp O    &kp P            &none  &none
+                       &none  &td_a_tab     &kp S  &kp D  &kp F  &kp G                                                       &kp H          &kp J  &kp K      &kp L    &kp SQT          &none
+                       &none  &mt LSHIFT Z  &kp X  &kp C  &kp V  &kp B                                                       &kp N          &kp M  &kp COMMA  &kp DOT  &mt RSHIFT FSLH  &none
+                                                                 &none  &mt LCTRL DEL  &lt _NAVNUM ENTER  &lt _NAVNUM SPACE  &mt LALT BSPC  &none            
             >;
         };
 
         _CLMKDH {
             label = "CLMKDH";
             bindings = <
-                &none  &td_q_esc     &kp W  &kp F  &kp P   &kp B                   &kp J   &kp L   &kp U      &kp Y    &kp SQT          &none  
-                &none  &td_a_tab     &kp R  &kp S  &kp T   &kp G                   &kp M   &kp N   &kp E      &kp I    &kp O            &none 
-                &none  &mt LSHIFT Z  &kp X  &kp C  &kp D   &kp V                   &kp K   &kp H   &kp COMMA  &kp DOT  &mt RSHIFT FSLH  &none  
-                                                   &none   &trans  &trans  &trans  &trans  &none         
+               &none  &none  &td_q_esc     &kp W  &kp F  &kp P   &kp B                   &kp J   &kp L   &kp U      &kp Y    &kp SQT          &none  &none  
+                      &none  &td_a_tab     &kp R  &kp S  &kp T   &kp G                   &kp M   &kp N   &kp E      &kp I    &kp O            &none 
+                      &none  &mt LSHIFT Z  &kp X  &kp C  &kp D   &kp V                   &kp K   &kp H   &kp COMMA  &kp DOT  &mt RSHIFT FSLH  &none  
+                                                         &none   &trans  &trans  &trans  &trans  &none         
            >;
        };
 
        _MACMOD {
             label = "MACMOD";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
-                                                &trans    &mt LGUI DEL  &trans  &trans  &mt LCTRL BSPC  &trans
+                &none  &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans  &none
+                       &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
+                       &trans  &trans  &trans  &trans  &trans    &trans                        &trans          &trans  &trans  &trans  &trans  &trans
+                                                       &trans    &mt LGUI DEL  &trans  &trans  &mt LCTRL BSPC  &trans
             >;
         };
 
         _42MODS {
             label = "42MODS";
             bindings = <
-                &kp ESC    &kp Q  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp BSPC
-                &kp TAB    &kp A  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp ENTER
-                &kp LSHFT  &kp Z  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &kp FSLH  &kp LSHFT
-                                                  &kp LALT  &trans  &trans  &trans  &trans  &kp LGUI
+                &none  &kp ESC    &kp Q  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp BSPC   &none
+                       &kp TAB    &kp A  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &trans    &kp ENTER
+                       &kp LSHFT  &kp Z  &trans  &trans  &trans    &trans                  &trans  &trans    &trans  &trans  &kp FSLH  &kp LSHFT
+                                                         &kp LALT  &trans  &trans  &trans  &trans  &kp LGUI
             >;
         };
         
         _NAVNUM {
             label = "NAVNUM";
             bindings = <
-                &trans  &td_esc_mtsk      &td_cl_home  &kp UP     &td_cr_end  &kp LPAR                                                 &kp RPAR     &kp N7  &kp N8  &kp  N9  &kp PIPE         &trans  
-                &trans  &kp TAB           &kp LEFT     &kp DOWN   &kp RIGHT   &mm_btb_l                                                &mm_btb_r    &kp N4  &kp N5  &kp  N6  &kp SEMI         &trans  
-                &trans  &mt LSHIFT SPACE  &kp UNDER    &kp COLON  &kp MINUS   &kp EQUAL                                                &kp PLUS     &kp N1  &kp N2  &kp  N3  &mt LSHIFT BSLH  &trans  
-                                                                  &trans      &mt LCTRL LC(DEL)  &lt _USFUNC ENTER  &lt _USFUNC SPACE  &mt LGUI N0  &trans
+                &none  &trans  &td_esc_mtsk      &td_cl_home  &kp UP     &td_cr_end  &kp LPAR                                                 &kp RPAR     &kp N7  &kp N8  &kp  N9  &kp PIPE         &trans  &none  
+                       &trans  &kp TAB           &kp LEFT     &kp DOWN   &kp RIGHT   &mm_btb_l                                                &mm_btb_r    &kp N4  &kp N5  &kp  N6  &kp SEMI         &trans  
+                       &trans  &mt LSHIFT SPACE  &kp UNDER    &kp COLON  &kp MINUS   &kp EQUAL                                                &kp PLUS     &kp N1  &kp N2  &kp  N3  &mt LSHIFT BSLH  &trans  
+                                                                         &trans      &mt LCTRL LC(DEL)  &lt _USFUNC ENTER  &lt _USFUNC SPACE  &mt LGUI N0  &trans
             >;
         };
 
         _USFUNC {
             label = "USFUNC";
             bindings = <
-                &trans  &kp CAPS  &kp GRAVE  &kp TILDE  &kp C_BRI_DN  &kp C_BRI_AUTO                  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &td_pp_nxt_prv  &mo _BTOOTH  &trans  
-                &trans  &kp EXCL  &kp AT     &kp HASH   &kp DLLR      &kp PRCNT                       &kp CARET   &kp AMPS      &kp ASTRK     &kp MINUS       &kp PLUS     &trans  
-                &trans  &kp F1    &kp F2     &kp F3     &kp F4        &kp F5                          &kp F6      &kp F7        &kp F8        &kp F9          &kp F10      &trans  
-                                                        &trans        &kp F11         &trans  &trans  &kp F12     &trans 
+                &none  &trans  &kp CAPS  &kp GRAVE  &kp TILDE  &kp C_BRI_DN  &kp C_BRI_AUTO                  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &td_pp_nxt_prv  &mo _BTOOTH  &trans  &none  
+                       &trans  &kp EXCL  &kp AT     &kp HASH   &kp DLLR      &kp PRCNT                       &kp CARET   &kp AMPS      &kp ASTRK     &kp MINUS       &kp PLUS     &trans  
+                       &trans  &kp F1    &kp F2     &kp F3     &kp F4        &kp F5                          &kp F6      &kp F7        &kp F8        &kp F9          &kp F10      &trans  
+                                                               &trans        &kp F11         &trans  &trans  &kp F12     &trans 
             >;
         };
 
         _BTOOTH {
             label = "BTOOTH";
             bindings = <
-                &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &tog _GAMING  &tog _42MODS  &tog _MACMOD  &tog _CLMKdh  &trans  &trans     
-                &trans  &bt_str       &trans        &trans        &trans        &trans                        &tog _SCRAFT  &trans        &trans        &trans        &trans  &trans  
-                &trans  &bt BT_CLR    &trans        &trans        &trans        &bootloader                   &trans        &trans        &trans        &trans        &trans  &trans  
-                                                                  &trans        &bt_clr_all   &trans  &trans  &trans        &trans 
+                &none  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &tog _GAMING  &tog _42MODS  &tog _MACMOD  &tog _CLMKdh  &trans  &trans  &none     
+                       &trans  &bt_str       &trans        &trans        &trans        &trans                        &tog _SCRAFT  &trans        &trans        &trans        &trans  &trans  
+                       &trans  &bt BT_CLR    &trans        &trans        &trans        &bootloader                   &trans        &trans        &trans        &trans        &trans  &trans  
+                                                                         &trans        &bt_clr_all   &trans  &trans  &trans        &trans 
             >; 
         };                              
         
         _GAMING {
             label = "GAMING";
             bindings = <
-                &trans  &trans  &kp W  &kp E  &kp R  &kp T   &kp Y                                            &kp U         &kp I           &kp O    &kp P      &trans
-                &trans  &trans  &kp S  &kp D  &kp F  &kp G   &kp H                                            &kp J         &kp K           &kp L    &kp SQT    &trans
-                &trans  &trans  &kp X  &kp C  &kp V  &kp B   &kp N                                            &kp M         &kp COMMA       &kp DOT  &kp SLASH  &trans
-                                                     &trans  &lt _CTLGR1 ENTER  &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING  &td_pp_nxt_prv
+                &none  &trans  &trans  &kp W  &kp E  &kp R  &kp T   &kp Y                                            &kp U         &kp I           &kp O    &kp P      &trans  &none
+                       &trans  &trans  &kp S  &kp D  &kp F  &kp G   &kp H                                            &kp J         &kp K           &kp L    &kp SQT    &trans
+                       &trans  &trans  &kp X  &kp C  &kp V  &kp B   &kp N                                            &kp M         &kp COMMA       &kp DOT  &kp SLASH  &trans
+                                                            &trans  &lt _CTLGR1 ENTER  &kp SPACE  &lt _NAVNUM SPACE  &tog _GAMING  &td_pp_nxt_prv
             >;                
         };     
 
         _SCRAFT {
             label = "SCRAFT";
             bindings = <
-                &trans  &kp Q   &kp W  &kp E  &kp R  &kp T   &kp Y                                                    &kp U         &kp I           &kp O    &kp P      &trans
-                &trans  &kp A   &kp S  &kp D  &kp F  &kp G   &kp H                                                    &kp J         &kp K           &kp L    &kp SQT    &trans
-                &trans  &trans  &kp X  &kp C  &kp V  &kp B   &kp N                                                    &kp M         &kp COMMA       &kp DOT  &kp SLASH  &trans
-                                                     &trans  &lt _CTLGR2 ENTER  &lt _CTLGR1 SPACE  &lt _NAVNUM SPACE  &tog _SCRAFT  &td_pp_nxt_prv
+                &none  &trans  &kp Q   &kp W  &kp E  &kp R  &kp T   &kp Y                                                    &kp U         &kp I           &kp O    &kp P      &trans  &none
+                       &trans  &kp A   &kp S  &kp D  &kp F  &kp G   &kp H                                                    &kp J         &kp K           &kp L    &kp SQT    &trans
+                       &trans  &trans  &kp X  &kp C  &kp V  &kp B   &kp N                                                    &kp M         &kp COMMA       &kp DOT  &kp SLASH  &trans
+                                                            &trans  &lt _CTLGR2 ENTER  &lt _CTLGR1 SPACE  &lt _NAVNUM SPACE  &tog _SCRAFT  &td_pp_nxt_prv
             >;                
         };
 
         _CTLGR1 {
             label = "CTLGR1";
             bindings = <
-                &trans  &kp LS(N4)  &kp LS(N3)  &kp LS(N2)  &kp LS(N1)  &kp BSPC                    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp N4      &kp N3      &kp N2      &kp N1      &kp N9                      &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp LC(N4)  &kp LC(N3)  &kp LC(N2)  &kp LC(N1)  &mo _CAMGR1                 &trans  &trans  &trans  &trans  &trans  &trans       
-                                                            &trans      &trans      &trans  &trans  &trans  &trans    
+                &none  &trans  &kp LS(N4)  &kp LS(N3)  &kp LS(N2)  &kp LS(N1)  &kp BSPC                    &trans  &trans  &trans  &trans  &trans  &trans  &none
+                       &trans  &kp N4      &kp N3      &kp N2      &kp N1      &kp N9                      &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans  &kp LC(N4)  &kp LC(N3)  &kp LC(N2)  &kp LC(N1)  &mo _CAMGR1                 &trans  &trans  &trans  &trans  &trans  &trans       
+                                                                   &trans      &trans      &trans  &trans  &trans  &trans    
             >;                
         };
 
         _CTLGR2 {
             label = "CTLGR2";
             bindings = <
-                &trans  &kp LS(N8)  &kp LS(N7)  &kp LS(N6)  &kp LS(N5)  &kp ESC                      &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp N8      &kp N7      &kp N6      &kp N5      &kp N0                       &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp LC(N8)  &kp LC(N7)  &kp LC(N6)  &kp LC(N5)  &mo _CAMGR2                  &trans  &trans  &trans  &trans  &trans  &trans       
-                                                            &trans      &trans       &trans  &trans  &trans  &trans    
+                &none  &trans  &kp LS(N8)  &kp LS(N7)  &kp LS(N6)  &kp LS(N5)  &kp ESC                      &trans  &trans  &trans  &trans  &trans  &trans  &none
+                       &trans  &kp N8      &kp N7      &kp N6      &kp N5      &kp N0                       &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans  &kp LC(N8)  &kp LC(N7)  &kp LC(N6)  &kp LC(N5)  &mo _CAMGR2                  &trans  &trans  &trans  &trans  &trans  &trans       
+                                                                   &trans      &trans       &trans  &trans  &trans  &trans    
             >;                
         };
 
         _CAMGR1 {
             label = "CAMGR1";
             bindings = <
-                &trans  &trans      &trans      &trans      &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp F4      &kp F3      &kp F2      &kp F1      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp LC(F4)  &kp LC(F3)  &kp LC(F2)  &kp LC(F1)  &trans                  &trans  &trans  &trans  &trans  &trans  &trans       
-                                                            &trans      &trans  &trans  &trans  &trans  &trans       
+                &none  &trans  &trans      &trans      &trans      &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &none
+                       &trans  &kp F4      &kp F3      &kp F2      &kp F1      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans  &kp LC(F4)  &kp LC(F3)  &kp LC(F2)  &kp LC(F1)  &trans                  &trans  &trans  &trans  &trans  &trans  &trans       
+                                                                   &trans      &trans  &trans  &trans  &trans  &trans       
             >; 
         };
         
         _CAMGR2 {
             label = "CAMGR2";
             bindings = <
-                &trans  &trans      &trans      &trans      &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans       
-                &trans  &kp F8      &kp F7      &kp F6      &kp F5      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp LC(F8)  &kp LC(F7)  &kp LC(F6)  &kp LC(F5)  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                                                            &trans      &trans  &trans  &trans  &trans  &trans       
+                &none  &trans  &trans      &trans      &trans      &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &none         
+                       &trans  &kp F8      &kp F7      &kp F6      &kp F5      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans  &kp LC(F8)  &kp LC(F7)  &kp LC(F6)  &kp LC(F5)  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                                                                   &trans      &trans  &trans  &trans  &trans  &trans       
             >; 
         };
     };
