@@ -6,6 +6,12 @@
 
 /dts-v1/;
 #include "ckp.dtsi"
+<<<<<<< HEAD
+=======
+#include <layouts/common/75percent/all1u.dtsi>
+#include <layouts/common/75percent/ansi.dtsi>
+#include <layouts/common/75percent/iso.dtsi>
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 
 / {
@@ -13,7 +19,11 @@
   compatible = "polarityworks,bt75_v1";
 
   chosen {
+<<<<<<< HEAD
     zmk,matrix_transform = &ansi_transform;
+=======
+    zmk,physical-layout = &layout_75_ansi;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
   };
 
 
@@ -59,3 +69,18 @@
     >;
   };
 };
+<<<<<<< HEAD
+=======
+
+&layout_75_ansi {
+  transform = <&ansi_transform>;
+};
+
+&layout_75_iso {
+  transform = <&iso_transform>;
+};
+
+&layout_75_all1u {
+  transform = <&all_1u_transform>;
+};
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90

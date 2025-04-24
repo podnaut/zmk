@@ -6,7 +6,10 @@
  */
 
 #include <zephyr/kernel.h>
+<<<<<<< HEAD
 #include <zephyr/bluetooth/services/bas.h>
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);

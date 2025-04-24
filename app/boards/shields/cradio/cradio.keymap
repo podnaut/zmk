@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 
+<<<<<<< HEAD
 #define _34BASE 0
 #define _CLMKdh 1
 #define _MACMOD 2
@@ -44,6 +45,19 @@
             tap-ms = <5>;
             bindings = <&bt BT_SEL 0 &bt BT_CLR &bt BT_SEL 1 &bt BT_CLR &bt BT_SEL 2 &bt BT_CLR &bt BT_SEL 3 &bt BT_CLR &bt BT_SEL 4 &bt BT_CLR>;
         };   
+=======
+/ {
+    behaviors {
+        ht: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <100>;
+            bindings = <&kp>, <&kp>;
+        };
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     behaviors {
@@ -130,6 +144,7 @@
         _CLMKDH {
             label = "CLMKDH";
             bindings = <
+<<<<<<< HEAD
                 &td_q_esc     &kp W  &kp F  &kp P   &kp B                   &kp J   &kp L   &kp U      &kp Y    &kp SQT          
                 &td_a_tab     &kp R  &kp S  &kp T   &kp G                   &kp M   &kp N   &kp E      &kp I    &kp O           
                 &mt LSHIFT Z  &kp X  &kp C  &kp D   &kp V                   &kp K   &kp H   &kp COMMA  &kp DOT  &mt RSHIFT FSLH  
@@ -154,6 +169,20 @@
                 &kp TAB           &kp LEFT     &kp DOWN   &kp RIGHT   &mm_btb_l                                                &mm_btb_r    &kp N4  &kp N5  &kp  N6  &kp SEMI         
                 &mt LSHIFT SPACE  &kp UNDER    &kp COLON  &kp MINUS   &kp EQUAL                                                &kp PLUS     &kp N1  &kp N2  &kp  N3  &mt LSHIFT BSLH  
                                                                       &mt LCTRL LC(DEL)  &lt _USFUNC ENTER  &lt _USFUNC SPACE  &mt LGUI N0  
+=======
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
+            &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
+            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SEMI
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &kp ESC        &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             >;
         };
 
@@ -170,6 +199,7 @@
         _BTOOTH {
             label = "BTOOTH";
             bindings = <
+<<<<<<< HEAD
                 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &tog _GAMING  &trans  &tog _MACMOD  &tog _CLMKdh  &trans      
                 &bt_str       &trans        &trans        &trans        &trans                        &tog _SCRAFT  &trans  &trans        &trans        &trans   
                 &bt BT_CLR    &trans        &trans        &trans        &bootloader                   &trans        &trans  &trans        &trans        &trans   
@@ -235,6 +265,21 @@
                 &kp LC(F8)  &kp LC(F7)  &kp LC(F6)  &kp LC(F5)  &trans                  &trans  &trans  &trans  &trans  &trans 
                                                                 &trans  &trans  &trans  &trans           
             >; 
+=======
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

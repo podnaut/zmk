@@ -12,7 +12,10 @@
     macros {
         slash_macro: slash_macro {
             #binding-cells = <2>;
+<<<<<<< HEAD
             label = "ZM_SLASH";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             compatible = "zmk,behavior-macro-two-param";
             wait-ms = <40>;
             tap-ms = <40>;
@@ -24,7 +27,10 @@
 
         to_second_macro: to_second_macro {
             #binding-cells = <2>;
+<<<<<<< HEAD
             label = "ZMK_TO_SECOND";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             compatible = "zmk,behavior-macro-two-param";
             wait-ms = <40>;
             tap-ms = <40>;
@@ -35,7 +41,10 @@
 
         quote_letter_macro: quote_letter_macro {
             #binding-cells = <1>;
+<<<<<<< HEAD
             label = "ZMK_QLET";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             compatible = "zmk,behavior-macro-one-param";
             wait-ms = <40>;
             tap-ms = <40>;
@@ -48,7 +57,10 @@
 
     keymap {
         compatible = "zmk,keymap";
+<<<<<<< HEAD
         label = "Default keymap";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         default_layer {
             bindings = <

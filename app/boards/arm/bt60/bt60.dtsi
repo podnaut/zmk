@@ -16,10 +16,14 @@
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
         zmk,battery = &vbatt;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,battery = &vbatt;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     sensors: sensors {
@@ -32,7 +36,10 @@
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "LEFT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
@@ -44,13 +51,19 @@
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
+<<<<<<< HEAD
         label = "BATTERY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         io-channels = <&adc 2>;
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 806000)>;
@@ -73,6 +86,7 @@
     status = "okay";
 };
 
+<<<<<<< HEAD
 &i2c0 {
     compatible = "nordic,nrf-twi";
     sda-pin = <17>;
@@ -91,6 +105,10 @@
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usbd {
+    status = "okay";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 
@@ -105,11 +123,17 @@
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "softdevice";
             reg = <0x00000000 0x00026000>;
         };
         code_partition: partition@26000 {
             label = "code_partition";
+=======
+            reg = <0x00000000 0x00026000>;
+        };
+        code_partition: partition@26000 {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00026000 0x000c6000>;
         };
 
@@ -123,12 +147,18 @@
          * if enabled.
          */
         storage_partition: partition@ec000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000ec000 0x00008000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000f4000 0x0000c000>;
         };
     };

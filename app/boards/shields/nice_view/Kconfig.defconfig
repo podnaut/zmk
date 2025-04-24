@@ -6,7 +6,11 @@ if SHIELD_NICE_VIEW
 config LV_Z_VDB_SIZE
     default 100
 
+<<<<<<< HEAD
 config LV_Z_DPI
+=======
+config LV_DPI_DEF
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     default 161
 
 config LV_Z_BITS_PER_PIXEL
@@ -24,6 +28,12 @@ choice ZMK_DISPLAY_STATUS_SCREEN
     default ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
 endchoice
 
+<<<<<<< HEAD
+=======
+config LV_Z_MEM_POOL_SIZE
+    default 4096 if ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 config ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
     imply NICE_VIEW_WIDGET_STATUS
 

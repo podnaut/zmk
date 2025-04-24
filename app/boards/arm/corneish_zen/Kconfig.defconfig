@@ -56,6 +56,16 @@ config IL0323
 
 config ZMK_DISPLAY_BLANK_ON_IDLE
     default n
+<<<<<<< HEAD
+=======
+
+# Needed for the IL0323 driver which allocs memory to clear the display
+config HEAP_MEM_POOL_SIZE
+    default 1024
+
+ config LV_Z_MEM_POOL_SIZE
+     default 4096
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 endif # ZMK_DISPLAY
 

@@ -8,7 +8,10 @@
     status = "okay";
     nice_view: ls0xx@0 {
         compatible = "sharp,ls0xx";
+<<<<<<< HEAD
         label = "DISPLAY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         spi-max-frequency = <1000000>;
         reg = <0>;
         width = <160>;

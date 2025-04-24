@@ -11,7 +11,11 @@ menuconfig EC11
 
 if EC11
 
+<<<<<<< HEAD
 choice
+=======
+choice EC11_TRIGGER_MODE
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     prompt "Trigger mode"
     default EC11_TRIGGER_NONE
     help

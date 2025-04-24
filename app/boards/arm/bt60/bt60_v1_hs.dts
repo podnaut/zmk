@@ -6,12 +6,16 @@
 
 /dts-v1/;
 #include "bt60.dtsi"
-
+#include <layouts/common/60percent/ansi.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
+<<<<<<< HEAD
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,physical-layout = &layout_60_ansi;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     default_transform: keymap_transform_0 {
@@ -30,6 +34,7 @@
 
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
+<<<<<<< HEAD
         label = "KSCAN";
         diode-direction = "col2row";
 
@@ -50,6 +55,29 @@
             , <&gpio0 12 GPIO_ACTIVE_HIGH>
             ;
 
+=======
+        wakeup-source;
+
+        diode-direction = "col2row";
+
+        col-gpios
+            = <&gpio1 11 GPIO_ACTIVE_HIGH>
+            , <&gpio1 10 GPIO_ACTIVE_HIGH>
+            , <&gpio1 13 GPIO_ACTIVE_HIGH>
+            , <&gpio1 15 GPIO_ACTIVE_HIGH>
+            , <&gpio0 3 GPIO_ACTIVE_HIGH>
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>
+            , <&gpio0 28 GPIO_ACTIVE_HIGH>
+            , <&gpio0 29 GPIO_ACTIVE_HIGH>
+            , <&gpio0 30 GPIO_ACTIVE_HIGH>
+            , <&gpio0 31 GPIO_ACTIVE_HIGH>
+            , <&gpio0 5 GPIO_ACTIVE_HIGH>
+            , <&gpio0 7 GPIO_ACTIVE_HIGH>
+            , <&gpio1 9 GPIO_ACTIVE_HIGH>
+            , <&gpio0 12 GPIO_ACTIVE_HIGH>
+            ;
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         row-gpios
             = <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -58,4 +86,11 @@
             , <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
+<<<<<<< HEAD
+=======
+};
+
+&layout_60_ansi {
+    transform = <&default_transform>;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };

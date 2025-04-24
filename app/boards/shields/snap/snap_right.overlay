@@ -9,7 +9,10 @@
 / {
 kscan_direct: kscan_direct {
     compatible = "zmk,kscan-gpio-direct";
+<<<<<<< HEAD
     label = "DIRECT";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     input-gpios
         = <&pro_micro 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
@@ -24,7 +27,11 @@ kscan_direct: kscan_direct {
         direct {
             kscan = <&kscan_direct>;
             row-offset = <1>;
+<<<<<<< HEAD
             column-offset = <8>;
+=======
+            col-offset = <8>;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };
 

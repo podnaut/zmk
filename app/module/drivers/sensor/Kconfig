@@ -7,4 +7,9 @@ rsource "battery/Kconfig"
 rsource "ec11/Kconfig"
 rsource "max17048/Kconfig"
 
+<<<<<<< HEAD
+=======
+rsource "encoder_mock/Kconfig"
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 endif # SENSOR

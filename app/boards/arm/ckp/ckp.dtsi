@@ -34,7 +34,12 @@
 
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
+<<<<<<< HEAD
         label = "KSCAN";
+=======
+        wakeup-source;
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         diode-direction = "col2row";
 
         col-gpios
@@ -66,15 +71,24 @@
             ;
     };
 
+<<<<<<< HEAD
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
+=======
+    // Node name must match original "EXT_POWER" label to preserve user settings.
+    EXT_POWER {
+        compatible = "zmk,ext-power-generic";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
     };
 
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "ENCODER_ONE";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
@@ -83,7 +97,10 @@
 
     encoder_2: encoder_2 {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "ENCODER_TWO";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
@@ -92,7 +109,10 @@
 
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "encoder_3";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
@@ -101,7 +121,10 @@
 
     backlight: pwmleds {
         compatible = "pwm-leds";
+<<<<<<< HEAD
         label = "Backlight LEDs";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         pwm_led_0 {
             pwms = <&pwm0 0 10000 PWM_POLARITY_NORMAL>;
         };
@@ -111,13 +134,19 @@
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
+<<<<<<< HEAD
         label = "VBATT";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         io-channels = <&adc 2>;
         output-ohms = <100000>;
         full-ohms = <(100000 + 100000)>;
@@ -147,7 +176,11 @@
     status = "okay";
 };
 
+<<<<<<< HEAD
 &usbd {
+=======
+zephyr_udc0: &usbd {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     status = "okay";
 };
 
@@ -163,11 +196,17 @@
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "softdevice";
             reg = <0x00000000 0x00026000>;
         };
         code_partition: partition@26000 {
             label = "code_partition";
+=======
+            reg = <0x00000000 0x00026000>;
+        };
+        code_partition: partition@26000 {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00026000 0x000c6000>;
         };
 
@@ -181,12 +220,18 @@
          * if enabled.
          */
         storage_partition: partition@ec000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000ec000 0x00008000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000f4000 0x0000c000>;
         };
     };
@@ -201,7 +246,10 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
+<<<<<<< HEAD
         label = "WS2812";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         /* SPI */
         reg = <0>;

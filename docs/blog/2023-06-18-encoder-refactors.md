@@ -1,9 +1,13 @@
 ---
 title: "Major Encoder Refactor"
+<<<<<<< HEAD
 author: Pete Johanson
 author_title: Project Creator
 author_url: https://gitlab.com/petejohanson
 author_image_url: https://www.gravatar.com/avatar/2001ceff7e9dc753cf96fcb2e6f41110
+=======
+authors: petejohanson
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 tags: [firmware, zephyr, sensors, encoders]
 ---
 
@@ -11,6 +15,11 @@ Today, we merged a significant change to the low level sensor code that is used 
 this paves the way for completing the work on supporting split peripheral sensors/encoders, and other future sensors
 like pointing devices.
 
+<<<<<<< HEAD
+=======
+<!-- truncate -->
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 As part of the work, backwards compatibility for existing shields has been retained, but only for a grace period to allow out-of-tree shields to move to the new approach for encoders.
 
 Special thanks to [joelspadin] for the _thorough_ code review and testing throughout the development of the refactor.
@@ -38,7 +47,10 @@ Previously, an encoder configuration looked like:
 ```dts
     left_encoder: encoder_left {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "LEFT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
@@ -61,7 +73,10 @@ That was the entirety of the configuration for encoders.
 ```dts
     left_encoder: encoder_left {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "LEFT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
@@ -117,3 +132,10 @@ The old configuration will be supported for a period of one month, and then remo
 
 [petejohanson]: https://github.com/petejohanson
 [joelspadin]: https://github.com/joelspadin
+<<<<<<< HEAD
+=======
+
+## Article Updates
+
+- 12/2023: Removed the deprecated `label` property from code snippets.
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90

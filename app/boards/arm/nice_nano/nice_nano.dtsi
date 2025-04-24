@@ -16,14 +16,20 @@
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     leds {
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };
@@ -49,6 +55,16 @@
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
+<<<<<<< HEAD
+=======
+};
+
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-1 = <&spi1_sleep>;
+    pinctrl-names = "default", "sleep";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 &uart0 {
@@ -59,12 +75,17 @@
     pinctrl-names = "default", "sleep";
 };
 
+<<<<<<< HEAD
 &usbd {
     status = "okay";
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usbd {
+    status = "okay";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 
@@ -79,11 +100,17 @@
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "softdevice";
             reg = <0x00000000 0x00026000>;
         };
         code_partition: partition@26000 {
             label = "code_partition";
+=======
+            reg = <0x00000000 0x00026000>;
+        };
+        code_partition: partition@26000 {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00026000 0x000c6000>;
         };
 
@@ -97,12 +124,18 @@
          * if enabled.
          */
         storage_partition: partition@ec000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000ec000 0x00008000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000f4000 0x0000c000>;
         };
     };

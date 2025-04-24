@@ -13,11 +13,17 @@ K_THREAD_STACK_DEFINE(lowprio_q_stack, CONFIG_ZMK_LOW_PRIORITY_THREAD_STACK_SIZE
 
 static struct k_work_q lowprio_work_q;
 
+<<<<<<< HEAD
 struct k_work_q *zmk_workqueue_lowprio_work_q() {
     return &lowprio_work_q;
 }
 
 static int workqueue_init() {
+=======
+struct k_work_q *zmk_workqueue_lowprio_work_q(void) { return &lowprio_work_q; }
+
+static int workqueue_init(void) {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     static const struct k_work_queue_config queue_config = {.name = "Low Priority Work Queue"};
     k_work_queue_start(&lowprio_work_q, lowprio_q_stack, K_THREAD_STACK_SIZEOF(lowprio_q_stack),
                        CONFIG_ZMK_LOW_PRIORITY_THREAD_PRIORITY, &queue_config);

@@ -4,16 +4,30 @@
  * SPDX-License-Identifier: MIT
  */
 
+
+#include <dt-bindings/zmk/behaviors.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
     behaviors {
+<<<<<<< HEAD
         /omit-if-no-ref/ gresc: grave_escape {
             compatible = "zmk,behavior-mod-morph";
             label = "GRAVE_ESCAPE";
             #binding-cells = <0>;
             bindings = <&kp ESC>, <&kp GRAVE>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+=======
+#if ZMK_BEHAVIOR_OMIT(GRESC)
+        /omit-if-no-ref/
+#endif
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+            display-name = "Grave/Escape";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

@@ -1,18 +1,39 @@
-#include <behaviors.dtsi>
+
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/kscan_mock.h>
 
 / {
     chosen {
+<<<<<<< HEAD
         zmk,kscan = &kscan;
     };
 
     kscan: kscan {
         compatible = "zmk,kscan-mock";
         label = "KSCAN_MOCK";
+=======
+        zephyr,console = &uart0;
+        zmk,kscan = &kscan;
+    };
+
+    kscan: native_posix_64_kscan_mock {
+        compatible = "zmk,kscan-mock";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         rows = <2>;
         columns = <2>;
         exit-after;
     };
+<<<<<<< HEAD
+=======
+
+    uart0: uart {
+        status = "okay";
+        compatible = "zephyr,native-posix-uart";
+        /* Dummy current-speed entry to comply with serial
+         * DTS binding
+         */
+        current-speed = <0>;
+    };
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };

@@ -4,23 +4,47 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/behaviors.h>
+
 / {
     behaviors {
+<<<<<<< HEAD
         /omit-if-no-ref/ sk: behavior_sticky_key {
             compatible = "zmk,behavior-sticky-key";
             label = "STICKY_KEY";
+=======
+#if ZMK_BEHAVIOR_OMIT(SK)
+        /omit-if-no-ref/
+#endif
+        sk: sticky_key {
+            compatible = "zmk,behavior-sticky-key";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             #binding-cells = <1>;
             release-after-ms = <1000>;
             bindings = <&kp>;
             ignore-modifiers;
+<<<<<<< HEAD
         };
         /omit-if-no-ref/ sl: behavior_sticky_layer {
             compatible = "zmk,behavior-sticky-key";
             label = "STICKY_LAYER";
+=======
+            display-name = "Sticky Key";
+        };
+#if ZMK_BEHAVIOR_OMIT(STICKY_LAYER)
+        /omit-if-no-ref/
+#endif
+        sl: sticky_layer {
+            compatible = "zmk,behavior-sticky-key";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             #binding-cells = <1>;
             release-after-ms = <1000>;
             bindings = <&mo>;
             quick-release;
+<<<<<<< HEAD
+=======
+            display-name = "Sticky Layer";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 

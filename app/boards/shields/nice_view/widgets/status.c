@@ -6,11 +6,18 @@
  */
 
 #include <zephyr/kernel.h>
+<<<<<<< HEAD
 #include <zephyr/bluetooth/services/bas.h>
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
+<<<<<<< HEAD
+=======
+#include <zmk/battery.h>
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 #include <zmk/display.h>
 #include "status.h"
 #include <zmk/events/usb_conn_state_changed.h>
@@ -36,7 +43,11 @@ struct output_status_state {
 };
 
 struct layer_status_state {
+<<<<<<< HEAD
     uint8_t index;
+=======
+    zmk_keymap_layer_index_t index;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     const char *label;
 };
 
@@ -149,7 +160,11 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     for (int i = 0; i < 5; i++) {
         bool selected = i == state->active_profile_index;
 
+<<<<<<< HEAD
         lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 359,
+=======
+        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 360,
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
                            &arc_dsc);
 
         if (selected) {
@@ -179,8 +194,13 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     lv_canvas_draw_rect(canvas, 0, 0, CANVAS_SIZE, CANVAS_SIZE, &rect_black_dsc);
 
     // Draw layer
+<<<<<<< HEAD
     if (state->layer_label == NULL) {
         char text[9] = {};
+=======
+    if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
+        char text[10] = {};
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         sprintf(text, "LAYER %i", state->layer_index);
 
@@ -210,8 +230,15 @@ static void battery_status_update_cb(struct battery_status_state state) {
 }
 
 static struct battery_status_state battery_status_get_state(const zmk_event_t *eh) {
+<<<<<<< HEAD
     return (struct battery_status_state) {
         .level = bt_bas_get_battery_level(),
+=======
+    const struct zmk_battery_state_changed *ev = as_zmk_battery_state_changed(eh);
+
+    return (struct battery_status_state){
+        .level = (ev != NULL) ? ev->state_of_charge : zmk_battery_state_of_charge(),
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 #if IS_ENABLED(CONFIG_USB_DEVICE_STACK)
         .usb_present = zmk_usb_is_powered(),
 #endif /* IS_ENABLED(CONFIG_USB_DEVICE_STACK) */
@@ -275,8 +302,14 @@ static void layer_status_update_cb(struct layer_status_state state) {
 }
 
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
+<<<<<<< HEAD
     uint8_t index = zmk_keymap_highest_layer_active();
     return (struct layer_status_state){.index = index, .label = zmk_keymap_layer_label(index)};
+=======
+    zmk_keymap_layer_index_t index = zmk_keymap_highest_layer_active();
+    return (struct layer_status_state){
+        .index = index, .label = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(index))};
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 }
 
 ZMK_DISPLAY_WIDGET_LISTENER(widget_layer_status, struct layer_status_state, layer_status_update_cb,

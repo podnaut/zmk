@@ -6,11 +6,23 @@
 
 #include "kyria_common.dtsi"
 
+<<<<<<< HEAD
 / {
     chosen {
         zmk,matrix_transform = &default_transform;
     };
 
+=======
+&splitkb_kyria_6col_layout {
+    transform = <&default_transform>;
+};
+
+&splitkb_kyria_5col_layout {
+    transform = <&five_column_transform>;
+};
+
+/ {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <16>;

@@ -9,19 +9,18 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
-// Uncomment the following block if using the "Direct Wire" jumper to switch the matrix to a direct wire.
+// Uncomment the following lines if using the "Direct Wire" jumper to switch the matrix to a direct wire.
 
-/* :REMOVE ME
-
-&kscan_direct_comp { status = "okay"; };
-&kscan_direct { status = "okay"; };
-&kscan_matrix_comp { status = "disabled"; };
-&kscan_matrix { status = "disabled"; };
+// / {
+//     chosen {
+//         zmk,physical-layout = &direct_physical_layout;
+//     };
+// };
 
 / {
+<<<<<<< HEAD
     chosen {
         zmk,matrix-transform = &direct_matrix_transform;
         zmk,kscan = &kscan_direct_comp;
@@ -45,6 +44,8 @@ REMOVE ME: */
         )
     };
 
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     keymap {
         compatible = "zmk,keymap";
 
@@ -52,8 +53,6 @@ REMOVE ME: */
             bindings = <
                 &kp A &bl BL_TOG
                 &rgb_ug RGB_EFF &bt BT_CLR
-
-                &out OUT_USB &ble_zero &ble_one
            >;
 
            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;

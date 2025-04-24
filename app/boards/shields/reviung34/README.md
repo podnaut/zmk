@@ -7,7 +7,11 @@ By default, the 2x1u layout is used. To use to the 1x2u layout, add the followin
 ```
 / {
     chosen {
+<<<<<<< HEAD
         zmk,matrix_transform = &single_2u_transform;
+=======
+        zmk,matrix-transform = &single_2u_transform;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };
 ```

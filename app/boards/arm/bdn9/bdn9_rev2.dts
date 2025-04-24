@@ -9,6 +9,14 @@
 #include <st/f0/stm32f072c(8-b)tx-pinctrl.dtsi>
 #include <dt-bindings/led/led.h>
 
+#include <dt-bindings/zmk/matrix_transform.h>
+
+#include "bdn9_rev2-layouts.dtsi"
+
+&physical_layout0 {
+    transform = <&matrix_transform0>;
+};
+
 / {
     model = "Keeb.io BDN9 rev2";
     compatible = "keebio,bdn9", "st,stm32f072";
@@ -16,6 +24,7 @@
     chosen {
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
         zmk,kscan = &kscan;
         zmk,underglow = &led_strip;
@@ -63,6 +72,62 @@
         status = "disabled";
     };
 
+=======
+        zmk,underglow = &led_strip;
+        zmk,physical-layout = &physical_layout0;
+        zmk,kscan = &kscan0;
+    };
+
+    matrix_transform0: matrix_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <3>;
+        rows = <3>;
+        map = <
+            RC(0,0) RC(0,1) RC(0,2)
+            RC(0,3) RC(0,4) RC(0,5)
+            RC(0,6) RC(0,7) RC(0,8)
+        >;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-direct";
+
+        input-gpios
+            = <&gpiob 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiob 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiob 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiob 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiob 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiob 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpioa 3  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiof 1  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpiof 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
+    };
+
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&gpioa 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpioa 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "disabled";
+    };
+    mid_encoder: encoder_mid {
+        compatible = "alps,ec11";
+        a-gpios = <&gpioa 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpioa 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "disabled";
+    };
+    right_encoder: encoder_right {
+        compatible = "alps,ec11";
+        a-gpios = <&gpioa 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpiob 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "disabled";
+    };
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         status = "disabled";
@@ -78,7 +143,10 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
+<<<<<<< HEAD
         label = "WS2812";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         /* SPI */
         reg = <0>; /* ignored, but necessary for SPI bindings */
@@ -111,6 +179,7 @@
     apb1-prescaler = <1>;
 };
 
+<<<<<<< HEAD
 &usb {
     status = "okay";
     pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>;
@@ -119,6 +188,15 @@
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usb {
+    status = "okay";
+    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>;
+    pinctrl-names = "default";
+
+    // Overridden to lower RAM usage.
+    num-bidir-endpoints = <4>;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 &rtc {
@@ -137,7 +215,10 @@
 
         /* Set 6Kb of storage at the end of the 128Kb of flash */
         storage_partition: partition@1e800 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x0001e800 0x00001800>;
         };
     };

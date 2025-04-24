@@ -6,7 +6,11 @@ if BOARD_GLOVE80_LH
 config BOARD
     default "glove80 lh"
 
+<<<<<<< HEAD
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
+=======
+config ZMK_SPLIT_ROLE_CENTRAL
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     default y
 
 endif # BOARD_GLOVE80_LH

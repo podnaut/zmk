@@ -1,6 +1,10 @@
 file_format: "1"
 id: seeeduino_xiao_rp2040
+<<<<<<< HEAD
 name: Seeeduino XIAO RP2040
+=======
+name: Seeed Studio XIAO RP2040
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 type: board
 arch: arm
 outputs:

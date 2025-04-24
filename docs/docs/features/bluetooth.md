@@ -3,7 +3,11 @@ title: Bluetooth
 sidebar_label: Bluetooth
 ---
 
+<<<<<<< HEAD
 ZMK's bluetooth functionality allows users to connect their keyboards to hosts using Bluetooth Low Energy (BLE) technology. It also is used for split keyboards to connect the two halves wirelessly.
+=======
+ZMK's bluetooth functionality allows users to connect their keyboards to hosts using Bluetooth Low Energy (BLE) technology. It also is used for [split keyboards](split-keyboards.md) to connect the two halves wirelessly.
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 :::note
 
@@ -22,9 +26,15 @@ The only known vulnerability in the protocol is a risk of an active man-in-the-m
 By default, ZMK supports five "profiles" for selecting which bonded host
 device should receive the keyboard input.
 
+<<<<<<< HEAD
 :::note Connection Management
 
 When pairing to a host device ZMK saves bond information to the selected profile. It will not replace this automatically when you initiate pairing with another device. To pair with a new device select an unused profile with or clearing the current profile, using the [`&bt` behavior](../behaviors/bluetooth.md) on your keyboard.
+=======
+:::note[Connection Management]
+
+When pairing to a host device ZMK saves bond information to the selected profile. It will not replace this automatically when you initiate pairing with another device. To pair with a new device select an unused profile with or clearing the current profile, using the [`&bt` behavior](../keymaps/behaviors/bluetooth.md) on your keyboard.
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 A ZMK device may show as "connected" on multiple hosts at the same time. This is working as intended, and only the host associated with the active profile will receive keystrokes.
 
@@ -34,6 +44,7 @@ Failure to manage the profiles can result in unexpected/broken behavior with hos
 
 ## Bluetooth Behavior
 
+<<<<<<< HEAD
 Management of the bluetooth in ZMK is accomplished using the [`&bt` behavior](../behaviors/bluetooth.md). Be sure to refer to that documentation to learn how to manage profiles, switch between connected hosts, etc.
 
 ## Troubleshooting
@@ -90,3 +101,19 @@ If this doesn't help, try following the procedure above but replace step 3 with 
 
 - Restart the Windows device
 - Open "Device Manager," turn on "Show hidden devices" from the "View" menu, then find and delete the keyboard under the "Bluetooth" item
+=======
+Management of the bluetooth in ZMK is accomplished using the [`&bt` behavior](../keymaps/behaviors/bluetooth.md). Be sure to refer to that documentation to learn how to manage profiles, switch between connected hosts, etc.
+
+## Refreshing the HID Descriptor
+
+Enabling certain features or behaviors in ZMK changes the data structure that ZMK sends over USB or BLE to host devices.
+This in turn requires [HID report descriptors](https://docs.kernel.org/hid/hidintro.html) to be modified for the reports to be parsed correctly.
+Firmware changes that would modify the descriptor include the following:
+
+- Changing any of the settings under the [HID category](../config/system.md#hid), including enabling/disabling NKRO or HID indicators
+- Enabling mouse features, such as adding [mouse keys](../keymaps/behaviors/mouse-emulation.md) to your keymap
+
+While the descriptor refresh happens on boot for USB, hosts will frequently cache this descriptor for BLE devices.
+In order to refresh this cache, you need to remove the keyboard from the host device, clear the profile associated with the host on the keyboard, then pair again.
+For Windows systems you might need to follow the additional instructions in [the section on troubleshooting connection issues](troubleshooting/connection-issues.mdx#windows-connected-but-not-working).
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90

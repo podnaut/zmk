@@ -4,5 +4,18 @@
 #include "../behavior_keymap.dtsi"
 
 &kscan {
+<<<<<<< HEAD
     events = <ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,10) ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,10)>;
+=======
+    events = <
+    ZMK_MOCK_PRESS(0,1,10)
+    ZMK_MOCK_RELEASE(0,1,10)
+    ZMK_MOCK_PRESS(0,0,10)
+    ZMK_MOCK_RELEASE(0,0,10)
+    ZMK_MOCK_PRESS(0,1,10)
+    ZMK_MOCK_RELEASE(0,1,10)
+    ZMK_MOCK_PRESS(0,0,10)
+    ZMK_MOCK_RELEASE(0,0,10)
+    >;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };

@@ -6,30 +6,46 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
+#include "kyria-layouts.dtsi"
+
 / {
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &kscan0;
+<<<<<<< HEAD
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,physical-layout = &splitkb_kyria_6col_layout;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
+<<<<<<< HEAD
         label = "KSCAN";
+=======
+        wakeup-source;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         diode-direction = "col2row";
     };
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "LEFT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
     };
 
     right_encoder: encoder_right {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "RIGHT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
     };
@@ -49,7 +65,10 @@
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
+<<<<<<< HEAD
         label = "DISPLAY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         width = <128>;
         height = <64>;
         segment-offset = <0>;
@@ -57,5 +76,9 @@
         display-offset = <0>;
         multiplex-ratio = <63>;
         prechargep = <0x22>;
+<<<<<<< HEAD
+=======
+        inversion-on;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };

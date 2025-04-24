@@ -4,12 +4,24 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/behaviors.h>
+
 / {
     behaviors {
+<<<<<<< HEAD
         /omit-if-no-ref/ none: behavior_none {
             compatible = "zmk,behavior-none";
             label = "NONE";
             #binding-cells = <0>;
+=======
+#if ZMK_BEHAVIOR_OMIT(NONE)
+        /omit-if-no-ref/
+#endif
+        none: none {
+            compatible = "zmk,behavior-none";
+            #binding-cells = <0>;
+            display-name = "None";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

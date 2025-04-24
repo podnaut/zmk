@@ -22,7 +22,10 @@ ZMK_COMBO(tilde, &kp TILDE,     3 4, 50)
 / {
     keymap {
         compatible = "zmk,keymap";
+<<<<<<< HEAD
         label = "Default keymap";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         default_layer {
             bindings = <

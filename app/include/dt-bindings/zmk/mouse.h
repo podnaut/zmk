@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 /*
  * Copyright (c) 2020 The ZMK Contributors
+=======
+
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
  *
  * SPDX-License-Identifier: MIT
  */
 #pragma once
 
+<<<<<<< HEAD
 #include <zephyr/dt-bindings/dt-util.h>
 
 /* Mouse press behavior */
@@ -22,3 +29,6 @@
 
 #define MB4 BIT(3)
 #define MB5 BIT(4)
+=======
+#include "pointing.h"
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90

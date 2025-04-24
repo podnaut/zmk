@@ -12,11 +12,19 @@
 / {
     chosen {
         // 34 keys.
+<<<<<<< HEAD
         zmk,matrix_transform = &dual_1u_transform;
 
         // 33 keys. Center two thumb keys replaced by a single 2u key. Remember to adjust your
         // keymap accordingly!
         // zmk,matrix_transform = &single_2u_transform;
+=======
+        zmk,matrix-transform = &dual_1u_transform;
+
+        // 33 keys. Center two thumb keys replaced by a single 2u key. Remember to adjust your
+        // keymap accordingly!
+        // zmk,matrix-transform = &single_2u_transform;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };
 
@@ -25,7 +33,11 @@
         compatible = "zmk,keymap";
 
         base {
+<<<<<<< HEAD
             label = "Base";
+=======
+            display-name = "Base";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             bindings = <
 &kp Q       &kp W       &kp E      &kp R &kp T    &kp Y      &kp U       &kp I          &kp O         &kp P
 &kp A       &kp S       &kp D      &kp F &kp G    &kp H      &kp J       &kp K          &kp L         &kp SEMI
@@ -35,7 +47,11 @@
         };
 
         lower {
+<<<<<<< HEAD
             label = "Lower";
+=======
+            display-name = "Lower";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             bindings = <
 &kp EXCL &kp AT    &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR
 &trans   &kp TILDE &kp DQT  &kp PIPE &trans    &trans    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC
@@ -45,7 +61,11 @@
         };
 
         upper {
+<<<<<<< HEAD
             label = "Upper";
+=======
+            display-name = "Upper";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             bindings = <
 &kp N1 &kp N2    &kp N3  &kp N4   &kp N5 &kp N6 &kp N7    &kp N8    &kp N9   &kp N0
 &trans &kp GRAVE &kp SQT &kp BSLH &trans &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT
@@ -55,7 +75,11 @@
         };
 
         function {
+<<<<<<< HEAD
             label = "Function";
+=======
+            display-name = "Function";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             bindings = <
 &kp TAB &trans       &kp C_VOL_UP &trans       &trans    &trans &trans   &trans   &trans &kp ENTER
 &kp ESC &kp C_BRI_DN &kp C_VOL_DN &kp C_BRI_UP &trans    &trans &kp LEFT &kp DOWN &kp UP &kp RIGHT
@@ -65,7 +89,11 @@
         };
 
         meta {
+<<<<<<< HEAD
             label = "Meta";
+=======
+            display-name = "Meta";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             bindings = <
 &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_SPI &rgb_ug RGB_EFF &none        &none        &none        &none        &none
 &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_SPD &rgb_ug RGB_EFR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4

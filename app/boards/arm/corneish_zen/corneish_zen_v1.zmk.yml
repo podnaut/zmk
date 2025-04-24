@@ -7,6 +7,10 @@ arch: arm
 features:
   - keys
   - display
+<<<<<<< HEAD
+=======
+  - studio
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 outputs:
   - usb
   - ble

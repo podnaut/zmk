@@ -23,9 +23,12 @@ config I2C
 
 config SSD1306
     default y
+<<<<<<< HEAD
 
 config SSD1306_REVERSE_MODE
     default y
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 endif # ZMK_DISPLAY
 
@@ -34,7 +37,11 @@ if LVGL
 config LV_Z_VDB_SIZE
     default 64
 
+<<<<<<< HEAD
 config LV_Z_DPI
+=======
+config LV_DPI_DEF
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     default 148
 
 config LV_Z_BITS_PER_PIXEL

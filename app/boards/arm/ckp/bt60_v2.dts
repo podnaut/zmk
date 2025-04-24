@@ -6,6 +6,13 @@
 
 /dts-v1/;
 #include "ckp.dtsi"
+<<<<<<< HEAD
+=======
+#include <layouts/common/60percent/all1u.dtsi>
+#include <layouts/common/60percent/ansi.dtsi>
+#include <layouts/common/60percent/hhkb.dtsi>
+#include <layouts/common/60percent/iso.dtsi>
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 
 / {
@@ -13,7 +20,11 @@
   compatible = "polarityworks,bt60_v2";
 
   chosen {
+<<<<<<< HEAD
     zmk,matrix_transform = &ansi_transform;
+=======
+    zmk,physical-layout = &layout_60_ansi;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
   };
 
 
@@ -69,3 +80,22 @@
     >;
   };
 };
+<<<<<<< HEAD
+=======
+
+&layout_60_ansi {
+  transform = <&ansi_transform>;
+};
+
+&layout_60_iso {
+  transform = <&iso_transform>;
+};
+
+&layout_60_all1u {
+  transform = <&all_1u_transform>;
+};
+
+&layout_60_hhkb {
+  transform = <&hhkb_transform>;
+};
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90

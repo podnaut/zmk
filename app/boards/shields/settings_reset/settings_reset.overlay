@@ -8,12 +8,20 @@
 
 / {
     chosen {
+<<<<<<< HEAD
         zmk,kscan = &kscan0;
     };
 
     kscan0: kscan {
         compatible = "zmk,kscan-mock";
         label = "KSCAN";
+=======
+        zmk,kscan = &settings_reset_kscan;
+    };
+
+    settings_reset_kscan: settings_reset_kscan {
+        compatible = "zmk,kscan-mock";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         columns = <1>;
         rows = <0>;
 

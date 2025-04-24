@@ -18,9 +18,12 @@ endif # USB_DEVICE_STACK
 config BT_CTLR
     default BT
 
+<<<<<<< HEAD
 config PINMUX
     default y
 
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 if BOARD_NRFMICRO_13 || BOARD_NRFMICRO_13_52833
 
 config BOARD_NRFMICRO_CHARGER

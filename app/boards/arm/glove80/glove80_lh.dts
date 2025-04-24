@@ -21,6 +21,7 @@
 
     back_led_backlight: pwmleds {
         compatible = "pwm-leds";
+<<<<<<< HEAD
         label = "BACK LED";
         pwm_led_0 {
             pwms = <&pwm0 0 PWM_USEC(20) PWM_POLARITY_NORMAL>;
@@ -31,13 +32,41 @@
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
+=======
+        pwm_led_0 {
+            pwms = <&pwm0 0 PWM_USEC(20) PWM_POLARITY_NORMAL>;
+        };
+    };
+
+    // Node name must match original "EXT_POWER" label to preserve user settings.
+    EXT_POWER {
+        compatible = "zmk,ext-power-generic";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         control-gpios = <&gpio0 31 GPIO_ACTIVE_HIGH>; /* WS2812_CE */
         init-delay-ms = <100>;
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
+<<<<<<< HEAD
         label = "BATTERY";
+=======
+    };
+
+    glove80_ext: connector {
+        compatible = "moergo,glove80-ext";
+        #gpio-cells = <2>;
+        gpio-map-mask = <0xffffffff 0xffffffc0>;
+        gpio-map-pass-thru = <0 0x3f>;
+        gpio-map
+            = <1 0 &gpio0 22 0>     /* EXT1 */
+            , <2 0 &gpio0 21 0>     /* EXT2 */
+            , <3 0 &gpio0 24 0>     /* EXT3 */
+            , <4 0 &gpio0 20 0>     /* EXT4 */
+            , <5 0 &gpio0 25 0>     /* EXT5 */
+            , <6 0 &gpio1 00 0>     /* EXT6 */
+            ;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };
 
@@ -51,7 +80,10 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
+<<<<<<< HEAD
         label = "WS2812C-2020";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         /* SPI */
         reg = <0>; /* ignored, but necessary for SPI bindings */

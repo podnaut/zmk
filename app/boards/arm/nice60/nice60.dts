@@ -10,6 +10,11 @@
 #include <dt-bindings/led/led.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 
+<<<<<<< HEAD
+=======
+#include <layouts/common/60percent/ansi.dtsi>
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 #include "nice60-pinctrl.dtsi"
 
 / {
@@ -20,10 +25,16 @@
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
         zmk,battery = &vbatt;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,battery = &vbatt;
+        zmk,kscan = &kscan0;
+        zmk,physical-layout = &layout_60_ansi;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         zmk,underglow = &led_strip;
     };
 
@@ -42,7 +53,11 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
+<<<<<<< HEAD
         label = "KSCAN";
+=======
+        wakeup-source;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         diode-direction = "col2row";
         row-gpios
@@ -74,6 +89,7 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
         };
     };
@@ -81,12 +97,23 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
+=======
+        };
+    };
+
+    // Node name must match original "EXT_POWER" label to preserve user settings.
+    EXT_POWER {
+        compatible = "zmk,ext-power-generic";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         control-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
+<<<<<<< HEAD
         label = "BATTERY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         io-channels = <&adc 2>;
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 806000)>;
@@ -113,12 +140,20 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
     compatible = "nordic,nrf-spim";
 
     pinctrl-0 = <&spi3_default>;
+<<<<<<< HEAD
     pinctrl-names = "default";
+=======
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     status = "okay";
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
+<<<<<<< HEAD
         label = "WS2812";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         /* SPI */
         reg = <0>; /* ignored, but necessary for SPI bindings */
@@ -132,12 +167,17 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
     };
 };
 
+<<<<<<< HEAD
 &usbd {
     status = "okay";
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usbd {
+    status = "okay";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 &flash0 {
@@ -151,12 +191,18 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "mbr";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00000000 0x00001000>;
         };
 
         code_partition: partition@1000 {
+<<<<<<< HEAD
             label = "code_partition";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00001000 0x000d3000>;
         };
 
@@ -170,13 +216,26 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
          * if enabled.
          */
         storage_partition: partition@d4000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000d4000 0x00020000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
             reg = <0x000f4000 0x0000c000>;
         };
     };
+=======
+            reg = <0x000f4000 0x0000c000>;
+        };
+    };
+};
+
+&layout_60_ansi {
+    transform = <&default_transform>;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };

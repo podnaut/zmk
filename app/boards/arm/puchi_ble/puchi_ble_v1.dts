@@ -17,7 +17,10 @@
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         zmk,battery = &vbatt;
     };
 
@@ -25,6 +28,7 @@
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
         };
     };
@@ -32,12 +36,23 @@
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
+=======
+        };
+    };
+
+    // Node name must match original "EXT_POWER" label to preserve user settings.
+    EXT_POWER {
+        compatible = "zmk,ext-power-generic";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         control-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
+<<<<<<< HEAD
         label = "BATTERY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         io-channels = <&adc 2>;
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 820000)>;
@@ -74,12 +89,17 @@
     pinctrl-names = "default", "sleep";
 };
 
+<<<<<<< HEAD
 &usbd {
     status = "okay";
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usbd {
+    status = "okay";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 
@@ -94,11 +114,17 @@
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "softdevice";
             reg = <0x00000000 0x00026000>;
         };
         code_partition: partition@26000 {
             label = "code_partition";
+=======
+            reg = <0x00000000 0x00026000>;
+        };
+        code_partition: partition@26000 {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00026000 0x000c6000>;
         };
 
@@ -112,12 +138,18 @@
          * if enabled.
          */
         storage_partition: partition@ec000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000ec000 0x00008000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000f4000 0x0000c000>;
         };
     };

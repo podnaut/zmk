@@ -3,10 +3,13 @@
 
 menuconfig ZMK_DISPLAY
     bool "Enable ZMK Display"
-    default n
     select DISPLAY
     select LVGL
+<<<<<<< HEAD
     select LV_CONF_MINIMAL
+=======
+    imply LV_CONF_MINIMAL
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 if ZMK_DISPLAY
 
@@ -14,6 +17,13 @@ config ZMK_DISPLAY_BLANK_ON_IDLE
     bool "Blank display on idle"
     default y if SSD1306
 
+<<<<<<< HEAD
+=======
+config ZMK_DISPLAY_TICK_PERIOD_MS
+    int "Period (in ms) between display task execution"
+    default 10
+
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 if LV_USE_THEME_MONO
 
 config ZMK_DISPLAY_INVERT
@@ -29,11 +39,16 @@ endchoice
 config LV_MEM_CUSTOM
     default y
 
+<<<<<<< HEAD
 config LV_Z_MEM_POOL_MIN_SIZE
     default 32
 
 config LV_Z_MEM_POOL_MAX_SIZE
     default 8192
+=======
+ config LV_Z_MEM_POOL_SIZE
+     default 4096 if ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 choice ZMK_DISPLAY_STATUS_SCREEN
     prompt "Default status screen for displays"
@@ -41,7 +56,11 @@ choice ZMK_DISPLAY_STATUS_SCREEN
 config ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN
     bool "Built in status screen"
     select LV_OBJ_LABEL
+<<<<<<< HEAD
     imply LV_USE_THEME_MONO
+=======
+    imply LV_USE_THEME_MONO if LV_Z_BITS_PER_PIXEL=1
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     imply ZMK_WIDGET_LAYER_STATUS
     imply ZMK_WIDGET_BATTERY_STATUS
     imply ZMK_WIDGET_OUTPUT_STATUS

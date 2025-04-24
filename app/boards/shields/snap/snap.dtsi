@@ -10,19 +10,29 @@
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &kscan_composite;
+<<<<<<< HEAD
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,matrix-transform = &default_transform;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "LEFT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
     };
 
     right_encoder: encoder_right {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "RIGHT_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
     };
@@ -51,7 +61,10 @@ RC(5,7) RC(5,6) RC(5,5) RC(5,4)         RC(5,2)         RC(5,0)    RC(5,15)     
 
     kscan_composite: kscan {
         compatible = "zmk,kscan-composite";
+<<<<<<< HEAD
         label = "KSCAN";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         rows = <6>;
         columns = <17>;
 
@@ -62,7 +75,10 @@ RC(5,7) RC(5,6) RC(5,5) RC(5,4)         RC(5,2)         RC(5,0)    RC(5,15)     
 
     kscan_demux: kscan_demux {
         compatible = "zmk,kscan-gpio-demux";
+<<<<<<< HEAD
         label = "DEMUX";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         polling-interval-msec = <25>;
     };
 };
@@ -73,7 +89,10 @@ RC(5,7) RC(5,6) RC(5,5) RC(5,4)         RC(5,2)         RC(5,0)    RC(5,15)     
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
+<<<<<<< HEAD
         label = "DISPLAY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         width = <128>;
         height = <32>;
         segment-offset = <0>;
@@ -81,6 +100,10 @@ RC(5,7) RC(5,6) RC(5,5) RC(5,4)         RC(5,2)         RC(5,0)    RC(5,15)     
         display-offset = <0>;
         multiplex-ratio = <31>;
         com-sequential;
+<<<<<<< HEAD
+=======
+        inversion-on;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         prechargep = <0x22>;
     };
 };

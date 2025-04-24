@@ -9,7 +9,11 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+<<<<<<< HEAD
     sensors {
+=======
+    sensors: sensors {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder_1>;
         triggers-per-rotation = <20>;
@@ -19,7 +23,11 @@
         compatible = "zmk,keymap";
 
         default_layer {
+<<<<<<< HEAD
             label = "Default";
+=======
+            display-name = "Default";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
 
@@ -32,7 +40,11 @@
             >;
         };
         function_layer {
+<<<<<<< HEAD
             label = "Function";
+=======
+            display-name = "Function";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
 

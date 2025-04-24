@@ -6,11 +6,17 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
+#include <layouts/kata0510/lily58.dtsi>
+
 / {
 
     chosen {
         zephyr,display = &oled;
+<<<<<<< HEAD
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,physical-layout = &kata0510_lily58_layout;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     default_transform: keymap_transform_0 {
@@ -33,7 +39,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,1) RC(4,10) RC(3,6) RC(3,7)
 
     left_encoder: left_encoder {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "L_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
 
@@ -43,7 +52,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,1) RC(4,10) RC(3,6) RC(3,7)
 
     right_encoder: right_encoder {
         compatible = "alps,ec11";
+<<<<<<< HEAD
         label = "R_ENCODER";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         steps = <80>;
         status = "disabled";
 
@@ -56,6 +68,13 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,1) RC(4,10) RC(3,6) RC(3,7)
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <20>;
     };
+<<<<<<< HEAD
+=======
+};
+
+&kata0510_lily58_layout {
+    transform = <&default_transform>;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 &pro_micro_i2c {
@@ -64,7 +83,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,1) RC(4,10) RC(3,6) RC(3,7)
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
+<<<<<<< HEAD
         label = "DISPLAY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         width = <128>;
         height = <32>;
         segment-offset = <0>;
@@ -74,6 +96,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,1) RC(4,10) RC(3,6) RC(3,7)
         segment-remap;
         com-invdir;
         com-sequential;
+<<<<<<< HEAD
+=======
+        inversion-on;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         prechargep = <0x22>;
     };
 };

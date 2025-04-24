@@ -4,7 +4,11 @@
  * SPDX-License-Identifier: MIT
  */
 
+<<<<<<< HEAD
 #define DT_DRV_COMPAT maxim_max17048
+=======
+#define DT_DRV_COMPAT zmk_maxim_max17048
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
@@ -205,8 +209,13 @@ static const struct sensor_driver_api max17048_api_table = {.sample_fetch = max1
                                                             .channel_get = max17048_channel_get};
 
 #define MAX17048_INIT(inst)                                                                        \
+<<<<<<< HEAD
     static struct max17048_config max17048_##inst##_config = {.i2c_bus =                           \
                                                                   I2C_DT_SPEC_INST_GET(inst)};     \
+=======
+    static const struct max17048_config max17048_##inst##_config = {                               \
+        .i2c_bus = I2C_DT_SPEC_INST_GET(inst)};                                                    \
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
                                                                                                    \
     static struct max17048_drv_data max17048_##inst##_drvdata = {                                  \
         .raw_state_of_charge = 0,                                                                  \

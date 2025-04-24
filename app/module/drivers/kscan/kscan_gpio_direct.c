@@ -12,6 +12,10 @@
 #include <zephyr/drivers/kscan.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+<<<<<<< HEAD
+=======
+#include <zephyr/pm/device.h>
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 #include <zephyr/sys/util.h>
 
 #include <zmk/debounce.h>
@@ -41,9 +45,20 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #define COND_POLL_OR_INTERRUPTS(pollcode, intcode)                                                 \
     COND_CODE_1(CONFIG_ZMK_KSCAN_DIRECT_POLLING, pollcode, intcode)
 
+<<<<<<< HEAD
 #define INST_INPUTS_LEN(n) DT_INST_PROP_LEN(n, input_gpios)
 #define KSCAN_DIRECT_INPUT_CFG_INIT(idx, inst_idx)                                                 \
     KSCAN_GPIO_GET_BY_IDX(DT_DRV_INST(inst_idx), input_gpios, idx)
+=======
+#define INST_INPUTS_LEN(n)                                                                         \
+    COND_CODE_1(DT_INST_NODE_HAS_PROP(n, input_gpios), (DT_INST_PROP_LEN(n, input_gpios)),         \
+                (DT_INST_PROP_LEN(n, input_keys)))
+
+#define KSCAN_GPIO_DIRECT_INPUT_CFG_INIT(idx, inst_idx)                                            \
+    KSCAN_GPIO_GET_BY_IDX(DT_DRV_INST(inst_idx), input_gpios, idx)
+#define KSCAN_KEY_DIRECT_INPUT_CFG_INIT(idx, inst_idx)                                             \
+    KSCAN_GPIO_GET_BY_IDX(DT_INST_PROP_BY_IDX(inst_idx, input_keys, idx), gpios, 0)
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 struct kscan_direct_irq_callback {
     const struct device *dev;
@@ -192,10 +207,17 @@ static int kscan_direct_read(const struct device *dev) {
 
     for (int i = 0; i < data->inputs.len; i++) {
         const struct kscan_gpio *gpio = &data->inputs.gpios[i];
+<<<<<<< HEAD
         struct zmk_debounce_state *state = &data->pin_state[gpio->index];
 
         if (zmk_debounce_get_changed(state)) {
             const bool pressed = zmk_debounce_is_pressed(state);
+=======
+        struct zmk_debounce_state *deb_state = &data->pin_state[gpio->index];
+
+        if (zmk_debounce_get_changed(deb_state)) {
+            const bool pressed = zmk_debounce_is_pressed(deb_state);
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
             LOG_DBG("Sending event at 0,%i state %s", gpio->index, pressed ? "on" : "off");
             data->callback(dev, 0, gpio->index, pressed);
@@ -204,7 +226,11 @@ static int kscan_direct_read(const struct device *dev) {
             }
         }
 
+<<<<<<< HEAD
         continue_scan = continue_scan || zmk_debounce_is_active(state);
+=======
+        continue_scan = continue_scan || zmk_debounce_is_active(deb_state);
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     }
 
     if (continue_scan) {
@@ -288,6 +314,24 @@ static int kscan_direct_init_input_inst(const struct device *dev, const struct g
     return 0;
 }
 
+#if IS_ENABLED(CONFIG_PM_DEVICE)
+
+static int kscan_direct_disconnect_inputs(const struct device *dev) {
+    const struct kscan_direct_data *data = dev->data;
+
+    for (int i = 0; i < data->inputs.len; i++) {
+        const struct gpio_dt_spec *gpio = &data->inputs.gpios[i].spec;
+        int err = gpio_pin_configure_dt(gpio, GPIO_DISCONNECTED);
+        if (err) {
+            return err;
+        }
+    }
+
+    return 0;
+}
+
+#endif // IS_ENABLED(CONFIG_PM_DEVICE)
+
 static int kscan_direct_init_inputs(const struct device *dev) {
     const struct kscan_direct_data *data = dev->data;
     const struct kscan_direct_config *config = dev->config;
@@ -310,13 +354,46 @@ static int kscan_direct_init(const struct device *dev) {
 
     // Sort inputs by port so we can read each port just once per scan.
     kscan_gpio_list_sort_by_port(&data->inputs);
+<<<<<<< HEAD
 
     kscan_direct_init_inputs(dev);
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
     k_work_init_delayable(&data->work, kscan_direct_work_handler);
 
+#if IS_ENABLED(CONFIG_PM_DEVICE)
+    pm_device_init_suspended(dev);
+
+#if IS_ENABLED(CONFIG_PM_DEVICE_RUNTIME)
+    pm_device_runtime_enable(dev);
+#endif
+
+#else
+
+    kscan_direct_init_inputs(dev);
+
+#endif
+
     return 0;
 }
+
+#if IS_ENABLED(CONFIG_PM_DEVICE)
+
+static int kscan_direct_pm_action(const struct device *dev, enum pm_device_action action) {
+    switch (action) {
+    case PM_DEVICE_ACTION_SUSPEND:
+        kscan_direct_disconnect_inputs(dev);
+        return kscan_direct_disable(dev);
+    case PM_DEVICE_ACTION_RESUME:
+        kscan_direct_init_inputs(dev);
+        return kscan_direct_enable(dev);
+    default:
+        return -ENOTSUP;
+    }
+}
+
+#endif // IS_ENABLED(CONFIG_PM_DEVICE)
 
 static const struct kscan_driver_api kscan_direct_api = {
     .config = kscan_direct_configure,
@@ -331,7 +408,13 @@ static const struct kscan_driver_api kscan_direct_api = {
                  "ZMK_KSCAN_DEBOUNCE_RELEASE_MS or debounce-release-ms is too large");             \
                                                                                                    \
     static struct kscan_gpio kscan_direct_inputs_##n[] = {                                         \
+<<<<<<< HEAD
         LISTIFY(INST_INPUTS_LEN(n), KSCAN_DIRECT_INPUT_CFG_INIT, (, ), n)};                        \
+=======
+        COND_CODE_1(DT_INST_NODE_HAS_PROP(n, input_gpios),                                         \
+                    (LISTIFY(INST_INPUTS_LEN(n), KSCAN_GPIO_DIRECT_INPUT_CFG_INIT, (, ), n)),      \
+                    (LISTIFY(INST_INPUTS_LEN(n), KSCAN_KEY_DIRECT_INPUT_CFG_INIT, (, ), n)))};     \
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
                                                                                                    \
     static struct zmk_debounce_state kscan_direct_state_##n[INST_INPUTS_LEN(n)];                   \
                                                                                                    \
@@ -343,7 +426,11 @@ static const struct kscan_driver_api kscan_direct_api = {
         .pin_state = kscan_direct_state_##n,                                                       \
         COND_INTERRUPTS((.irqs = kscan_direct_irqs_##n, ))};                                       \
                                                                                                    \
+<<<<<<< HEAD
     static struct kscan_direct_config kscan_direct_config_##n = {                                  \
+=======
+    static const struct kscan_direct_config kscan_direct_config_##n = {                            \
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         .debounce_config =                                                                         \
             {                                                                                      \
                 .debounce_press_ms = INST_DEBOUNCE_PRESS_MS(n),                                    \
@@ -354,7 +441,13 @@ static const struct kscan_driver_api kscan_direct_api = {
         .toggle_mode = DT_INST_PROP(n, toggle_mode),                                               \
     };                                                                                             \
                                                                                                    \
+<<<<<<< HEAD
     DEVICE_DT_INST_DEFINE(n, &kscan_direct_init, NULL, &kscan_direct_data_##n,                     \
+=======
+    PM_DEVICE_DT_INST_DEFINE(n, kscan_direct_pm_action);                                           \
+                                                                                                   \
+    DEVICE_DT_INST_DEFINE(n, &kscan_direct_init, PM_DEVICE_DT_INST_GET(n), &kscan_direct_data_##n, \
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
                           &kscan_direct_config_##n, POST_KERNEL, CONFIG_KSCAN_INIT_PRIORITY,       \
                           &kscan_direct_api);
 

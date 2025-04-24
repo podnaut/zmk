@@ -3,6 +3,11 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
+<<<<<<< HEAD
 config BOARD_MIKOTO_520
     bool "mikoto_520"
+=======
+config BOARD_MIKOTO
+    bool "mikoto"
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     depends on SOC_NRF52840_QIAA

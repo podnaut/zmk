@@ -10,6 +10,17 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
+#include <layouts/foostan/corne/5column.dtsi>
+#include <layouts/foostan/corne/6column.dtsi>
+
+&foostan_corne_6col_layout {
+    transform = <&default_transform>;
+};
+
+&foostan_corne_5col_layout {
+    transform = <&five_column_transform>;
+};
+
 / {
     model = "Corne-ish Zen";
     compatible = "corneish_zen";
@@ -20,8 +31,12 @@
         zephyr,flash = &flash0;
         zmk,kscan = &kscan0;
         zmk,display = &epd;
+<<<<<<< HEAD
         zephyr,console = &cdc_acm_uart;
         zmk,matrix_transform = &default_transform;
+=======
+        zmk,physical-layout = &foostan_corne_6col_layout;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 
     default_transform: keymap_transform_0 {
@@ -76,12 +91,17 @@
     status = "okay";
 };
 
+<<<<<<< HEAD
 &usbd {
     status = "okay";
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
         label = "CDC_ACM_0";
     };
+=======
+zephyr_udc0: &usbd {
+    status = "okay";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 };
 
 &flash0 {
@@ -95,11 +115,17 @@
         #size-cells = <1>;
 
         sd_partition: partition@0 {
+<<<<<<< HEAD
             label = "softdevice";
             reg = <0x00000000 0x00026000>;
         };
         code_partition: partition@26000 {
             label = "code_partition";
+=======
+            reg = <0x00000000 0x00026000>;
+        };
+        code_partition: partition@26000 {
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x00026000 0x000c6000>;
         };
 
@@ -113,12 +139,18 @@
          * if enabled.
          */
         storage_partition: partition@ec000 {
+<<<<<<< HEAD
             label = "storage";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000ec000 0x00008000>;
         };
 
         boot_partition: partition@f4000 {
+<<<<<<< HEAD
             label = "adafruit_boot";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
             reg = <0x000f4000 0x0000c000>;
         };
     };

@@ -25,14 +25,21 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
+<<<<<<< HEAD
         label = "WS2812";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         /* SPI */
         reg = <0>; /* ignored, but necessary for SPI bindings */
         spi-max-frequency = <4000000>;
 
         /* WS2812 */
+<<<<<<< HEAD
         chain-length = <10>; /* arbitrary; change at will */
+=======
+        chain-length = <8>; /* number of SMD LED footprints on PCB */
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
 

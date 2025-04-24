@@ -15,7 +15,11 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
+<<<<<<< HEAD
         label = "KSCAN";
+=======
+        wakeup-source;
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
         diode-direction = "col2row";
         row-gpios
@@ -39,7 +43,10 @@
         compatible = "gpio-leds";
         blue_led: led_0 {
             gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
+<<<<<<< HEAD
             label = "Blue LED";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };
@@ -96,9 +103,14 @@
 
     fuelgauge: bq274xx@55 {
         compatible = "ti,bq274xx";
+<<<<<<< HEAD
         label = "BATTERY";
         reg = <0x55>;
         design-voltage = <3700>; //Battery Design Volatge in mV
+=======
+        reg = <0x55>;
+        design-voltage = <3700>; //Battery Design Voltage in mV
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         design-capacity = <180>; //Battery Design Capacity in mAh
         taper-current = <2>; //Battery Taper current in mAh 2.1
         terminate-voltage = <2750>; //Battery Terminate Voltage in mV
@@ -117,7 +129,10 @@
     epd: il0323@0 {
         compatible = "gooddisplay,il0323";
         reg =  <0>;
+<<<<<<< HEAD
         label = "DISPLAY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         width = <80>;
         height = <128>;
         spi-max-frequency = <4000000>;

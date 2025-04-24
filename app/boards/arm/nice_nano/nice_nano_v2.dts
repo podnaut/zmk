@@ -12,15 +12,24 @@
         zmk,battery = &vbatt;
     };
 
+<<<<<<< HEAD
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
+=======
+    // Node name must match original "EXT_POWER" label to preserve user settings.
+    EXT_POWER {
+        compatible = "zmk,ext-power-generic";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
         init-delay-ms = <50>;
     };
 
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
+<<<<<<< HEAD
         label = "BATTERY";
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
     };
 };

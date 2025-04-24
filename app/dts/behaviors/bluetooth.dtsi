@@ -4,12 +4,24 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/behaviors.h>
+
 / {
     behaviors {
+<<<<<<< HEAD
         /omit-if-no-ref/ bt: behavior_bluetooth {
             compatible = "zmk,behavior-bluetooth";
             label = "BLUETOOTH";
             #binding-cells = <2>;
+=======
+#if ZMK_BEHAVIOR_OMIT(BT)
+        /omit-if-no-ref/
+#endif
+        bt: bluetooth {
+            compatible = "zmk,behavior-bluetooth";
+            #binding-cells = <2>;
+            display-name = "Bluetooth";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

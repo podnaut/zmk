@@ -8,6 +8,7 @@
 
 / {
     behaviors {
+<<<<<<< HEAD
         sys_reset: behavior_reset {
             compatible = "zmk,behavior-reset";
             label = "SYSRESET";
@@ -19,6 +20,21 @@
             label = "BOOTLOAD";
             type = <RST_UF2>;
             #binding-cells = <0>;
+=======
+        // Behavior can be invoked on peripherals, so name must be <= 8 characters.
+        sys_reset: sysreset {
+            compatible = "zmk,behavior-reset";
+            #binding-cells = <0>;
+            display-name = "Reset";
+        };
+
+        // Behavior can be invoked on peripherals, so name must be <= 8 characters.
+        bootloader: bootload {
+            compatible = "zmk,behavior-reset";
+            type = <RST_UF2>;
+            #binding-cells = <0>;
+            display-name = "Bootloader";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

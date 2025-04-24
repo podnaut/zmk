@@ -3,7 +3,7 @@ title: Encoder Configuration
 sidebar_label: Encoders
 ---
 
-See the [Encoders feature page](../features/encoders.md) for more details, including instructions for adding encoder support to a board.
+See the [Encoders informational page](../features/encoders.md) for more details, including instructions for adding encoder support to a board.
 
 See [Configuration Overview](index.md) for instructions on how to change these settings.
 
@@ -29,7 +29,11 @@ If `CONFIG_EC11` is enabled, exactly one of the following options must be set to
 
 ### Devicetree
 
+<<<<<<< HEAD
 #### Keymap Sensor Config
+=======
+#### Keymap sensor config
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 For shields/boards that export a `sensors` node configuration label, both global and per-sensor settings can be set by overriding the properties there.
 
@@ -69,7 +73,11 @@ Definition file: [zmk/app/drivers/zephyr/dts/bindings/zmk,keymap-sensors.yaml](h
 | ----------------------- | ---- | --------------------------------------------------------------- | ------- |
 | `triggers-per-rotation` | int  | Number of times to trigger the bound behavior per full rotation |         |
 
+<<<<<<< HEAD
 #### EC11 Nodes
+=======
+#### EC11 nodes
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 
 Applies to: `compatible = "alps,ec11"`
 
@@ -77,7 +85,10 @@ Definition file: [zmk/app/module/dts/bindings/sensor/alps,ec11.yaml](https://git
 
 | Property  | Type       | Description                                    | Default |
 | --------- | ---------- | ---------------------------------------------- | ------- |
+<<<<<<< HEAD
 | `label`   | string     | Unique label for the node                      |         |
+=======
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
 | `a-gpios` | GPIO array | GPIO connected to the encoder's A pin          |         |
 | `b-gpios` | GPIO array | GPIO connected to the encoder's B pin          |         |
 | `steps`   | int        | Number of encoder pulses per complete rotation |         |

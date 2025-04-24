@@ -6,10 +6,18 @@
 
 / {
     behaviors {
+<<<<<<< HEAD
         ext_power: behavior_ext_power {
             compatible = "zmk,behavior-ext-power";
             label = "EXTPOWER";
             #binding-cells = <1>;
+=======
+        // Behavior can be invoked on peripherals, so name must be <= 8 characters.
+        ext_power: extpower {
+            compatible = "zmk,behavior-ext-power";
+            #binding-cells = <1>;
+            display-name = "External Power";
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
         };
     };
 };

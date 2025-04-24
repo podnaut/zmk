@@ -1,5 +1,23 @@
 # Copyright (c) 2022 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
+config SHIELD_ZMK_UNO_BASE
+    bool
+
 config SHIELD_ZMK_UNO
     def_bool $(shields_list_contains,zmk_uno)
+<<<<<<< HEAD
+=======
+    select SHIELD_ZMK_UNO_BASE
+
+config SHIELD_ZMK_UNO_SPLIT_LEFT
+    def_bool $(shields_list_contains,zmk_uno_split_left)
+    select SHIELD_ZMK_UNO_BASE
+    select ZMK_SPLIT
+    select ZMK_SPLIT_ROLE_CENTRAL
+
+config SHIELD_ZMK_UNO_SPLIT_RIGHT
+    def_bool $(shields_list_contains,zmk_uno_split_right)
+    select SHIELD_ZMK_UNO_BASE
+    select ZMK_SPLIT
+>>>>>>> 4235c8b491b32565850efd296a2f4199dbbc4d90
